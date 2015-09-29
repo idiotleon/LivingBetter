@@ -1,4 +1,4 @@
-package tek.first.livingbetter;
+package tek.first.livingbetter.login;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,6 +16,8 @@ import android.widget.EditText;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import tek.first.livingbetter.HomeActivity;
+import tek.first.livingbetter.R;
 import tek.first.livingbetter.helper.DatabaseHelper;
 
 public class LoginActivity extends AppCompatActivity {

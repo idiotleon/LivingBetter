@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.habit.DisplayFragment;
+import tek.first.livingbetter.setting.SettingActivity;
 import tek.first.livingbetter.todolist.TodolistFragment;
 import tek.first.livingbetter.wallet.MainActivity_WalletFragment;
 

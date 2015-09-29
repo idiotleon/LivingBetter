@@ -1,4 +1,4 @@
-package tek.first.livingbetter;
+package tek.first.livingbetter.setting;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,20 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import tek.first.livingbetter.R;
+
 /**
  * A placeholder fragment containing a simple view.
  */
-public class SignUpFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
-
-    public SignUpFragment() {
+    public SettingFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 }

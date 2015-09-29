@@ -1,4 +1,4 @@
-package tek.first.livingbetter;
+package tek.first.livingbetter.login;
 
 import android.content.ContentValues;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import tek.first.livingbetter.R;
 import tek.first.livingbetter.helper.DatabaseHelper;
 import tek.first.livingbetter.helper.UserContract;
 
