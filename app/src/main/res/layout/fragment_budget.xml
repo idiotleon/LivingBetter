@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tek.first.livingbetter.wallet.BudgetFragment">
+
+
+
+
+    <tek.first.livingbetter.wallet.MyProgressBar
+        android:id="@+id/budget_pb"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/et"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:layout_below="@+id/budget_pb">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_entertain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/entertainment_tv_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/entertainment_tv_fragment_budget"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/entertainment_et_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:ems="5"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$/month" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/food_tv_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Food_tv_fragment_budget"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/food_et_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="70dp"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$/month" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/shopping_tv_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Shopping_tv_fragment_budget"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/shopping_et_fragment_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:ems="5"
+                android:layout_marginStart="45dp"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$/month" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/save_btn_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/et"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/save_50"
+                android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
+
+            <Button
+                android:id="@+id/edit_btn_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/et"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/edit_50"
+                android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

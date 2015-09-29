@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="@drawable/et"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title:" />
+
+        <EditText
+            android:id="@+id/dia_et_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="5"
+            android:layout_marginLeft="33dp"
+            android:minWidth="200dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category: " />
+
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"></Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority: " />
+
+        <EditText
+            android:id="@+id/dia_et_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_marginLeft="17dp"
+            android:ems="4"
+            android:minWidth="200dip" />
+    </LinearLayout>
+</LinearLayout>

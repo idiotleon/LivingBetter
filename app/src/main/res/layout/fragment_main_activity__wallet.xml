@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity_WalletFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_title"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:background="#8866ff00"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_overview_title"
+            android:layout_width="0dp"
+            android:layout_height="55dip"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Finance overview"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout_title" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp"
+        android:layout_margin="3dp"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/switch_rg_walletmain"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="5dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+
+            >
+
+            <RadioButton
+                android:id="@+id/switch_budget"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:background="@drawable/et2"
+                android:drawableLeft="@drawable/money_bag_50_2"
+                android:text="Budget"
+                android:textSize="19sp"/>
+
+            <RadioButton
+                android:id="@+id/switch_history"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/et2"
+                android:drawableLeft="@drawable/money_box_50_2"
+                android:text="History"
+                android:textSize="19sp"/>
+
+            <RadioButton
+                android:id="@+id/switch_analysis"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/et2"
+                android:drawableLeft="@drawable/bill_50"
+                android:text="Analysis"
+                android:textSize="19sp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</RelativeLayout>

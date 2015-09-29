@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tek.first.livingbetter.SignUpFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#44ffdf">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="Welcome to Activities Manager"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <EditText
+            android:id="@+id/username_editText_signUp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Username......"
+            android:inputType="textPersonName"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+
+        <EditText
+            android:id="@+id/password_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Password......"
+            android:inputType="textPassword"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <EditText
+            android:id="@+id/password_com_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Re-enter password......"
+            android:inputType="textPassword"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <EditText
+            android:id="@+id/age_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Age......"
+            android:inputType="numberDecimal"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <EditText
+            android:id="@+id/street_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Street......"
+            android:inputType="text"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <EditText
+            android:id="@+id/city_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="City......"
+            android:inputType="text"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <EditText
+            android:id="@+id/country_editText_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Country......"
+            android:inputType="text"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+
+        <Button
+            android:id="@+id/signUp_button_signUp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="signUp"
+            android:text="@string/signUP_button_title"
+            android:textAllCaps="false"
+            android:background="@drawable/et"
+            android:drawableLeft="@drawable/add_user_50"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
+
+
+    </LinearLayout>
+</LinearLayout>

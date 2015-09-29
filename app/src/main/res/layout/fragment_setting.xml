@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tek.first.livingbetter.SettingFragment">
+
+
+    <LinearLayout
+        android:id="@+id/food_setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Food"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.TextView" />
+        <EditText
+            android:id="@+id/food_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginLeft="80dp"
+            android:text="food"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/entertainment_setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.TextView"
+            android:text="Entertainment"/>
+        <EditText
+            android:id="@+id/entertainment_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginLeft="20dp"
+            android:text="entertainment"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/shopping_setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.TextView"
+            android:text="Shopping"/>
+        <EditText
+            android:id="@+id/shopping_setting"
+            android:layout_width="wrap_content"
+            android:ems="10"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:text="shopping"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:layout_marginRight="20dp"
+        android:onClick="save"
+        android:id="@+id/save_button_setting"
+        android:layout_gravity="right" />
+
+
+</LinearLayout>

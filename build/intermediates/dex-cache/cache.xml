@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-72008d9017b794edd120adfec1f6dbb04092fd86.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-78be2435ab3dccee2b1ceb38de6fab0434aa6c38.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-d3afd82449816b16ba30c17551adf9a52d7e2151.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-3241083d8783120d92d4f1bf6d734959bc202338.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-f1b2ae6dc2d182837d5a5d77e37b29ac7843b839.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\crouton-1.8.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f085933fd4fad9693229d105d6d6d01fa90bb599">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\crouton-1.8.5-289056b44cff8732cfb5a3e1ae26fd20e954e81e.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\achartengine-1.1.0-de65f4115f3e5d18b4db6f73580101509da8a8e0.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-e783caf19da1191c43b0e520447e3d2fbd77a2c9.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-2014fc2b1e9e0f7e287da56e4b4bcdbacf1a3c25.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\picasso-2.5.2-64fe8bf1bd3f19734ffe0b6e6cb96056367a2ccb.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-4c4181755c32348143e7c443dfeffca8f1bcf41b.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-5e67efa4bb4aaa5cec28e78c10b105b476173e74.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-f880f3c94f1395cb7f8cbc82f99feed05e539b12.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-a938287293aca8f30e2eba5975f3fc3946352ba9.jar" />
+    </item>
+    <item
+        jar="E:\Software\Matrix\Android\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\support-annotations-23.0.0-583818e4ff00bc7aff93ea75a80fd83dc8c2f4cd.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\jcommander-1.35.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="47592e181b0bdbbeb63029e08c5e74f6803c4edd">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\jcommander-1.35-7033d49e0ed4338f47a2e7d076c47cb118206378.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-a23e9652cd9826228cf403796394ab4b0129c146.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\gson-2.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="53bfcd3c8e310d1493b2691484525ed90b04e236">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\gson-2.2.2-e7114c57461d6c60280d4e31790e354c2b1d8ba3.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-a852e9fb11d03e6425792624790acaf5d6e4bc48.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-ced70520aa673dcd6da26dc5e171f928c40500d3.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\internal_impl-23.0.0-53e38b18ae52d3732f63b77a318be62bcb03909f.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-ddc8b36da9abb2862c87c21d88a1c8970389ed4b.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-9ac7cbab4e71c92883c417c85682c2a248f1aa46.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-6bb8822d4e8af24d646269f8ff9511a30f0f11b0.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-f98e644ac0c83e5856f1efe239a8b95729f929b8.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\json_simple-1.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5e303a03d04e6788dddfa3655272580ae0fc13bb">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\json_simple-1.1-dbb2653fa1e9bdd7eceef10f66d9d6115de20217.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-bc92497e4a8bed6c0d6f5098834da4afb0be691f.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-f5e9f0959595c524593320232d3f03fd63ad29b9.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\libs\scribe-1.3.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a3b3deded9d241d9f2c8aa9c9bcd90ad29e2581e">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\scribe-1.3.5-40bc8398fd1befb8a23b7c00a088adde105f2b8d.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-e9fd2fb97fd304306b3b3e87c83a375ad172c59a.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-8442bd71a66413808141f09f396fe0a10592ccc7.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-b51633b41aeb870a0dbf25cf3ec596a638f4d25c.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\internal_impl-22.2.0-401cbc3b710fd8c1e6e9d5aa03e9445089b19044.jar" />
+    </item>
+    <item
+        jar="E:\Downloads\Github\LivingBetter\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="E:\Downloads\Github\LivingBetter\app\build\intermediates\pre-dexed\release\classes-cf090f54f36b3c68bc6f5972fa99bc23b95dc407.jar" />
+    </item>
+
+</items>

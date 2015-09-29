@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:layout_marginBottom="52dp"
+    tools:context="tek.first.livingbetter.wallet.BudgetFragment">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.66"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:weightSum="2.2">
+
+        <TextView
+            android:id="@+id/startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose starting date"
+            android:layout_weight="0.1"
+            android:textSize="20sp" />
+
+
+        <DatePicker
+            android:id="@+id/dp_startDate_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:layout_weight="1"/>
+
+
+        <TextView
+            android:id="@+id/tv_endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Choose Ending date"
+            android:layout_weight="0.1"
+            android:textSize="20sp" />
+
+
+        <DatePicker
+            android:id="@+id/dp_endDate_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.34"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Chart type"
+                android:textSize="20sp" />
+
+
+            <RadioGroup
+                android:id="@+id/chart_rg_analysis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/pieChart_rb_analysis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PieChart" />
+
+                <RadioButton
+                    android:id="@+id/barChart_rb_analysis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BarChart" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/define_location_50"
+                android:layout_below="@id/chart_rg_analysis"
+                android:text="Show" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

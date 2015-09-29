@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:drawableTop="@drawable/valet_50"
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            android:textSize="38sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/username_editText_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Username......"
+            android:inputType="textPersonName"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+
+        <EditText
+            android:id="@+id/password_editText_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Password......"
+            android:inputType="textPassword"
+            android:textAppearance="@android:style/TextAppearance.Holo.Widget.EditText" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/login_button_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/et"
+                android:drawableStart="@drawable/checked_user_50"
+                android:onClick="login"
+                android:text="@string/login_button_title"
+                android:textAllCaps="false"
+                android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
+
+            <Button
+                android:id="@+id/signUp_button_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/et"
+                android:drawableLeft="@drawable/add_user_50"
+                android:onClick="signUp"
+                android:text="@string/signUP_button_title"
+                android:textAllCaps="false"
+                android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".TodolistFragment">
+
+    <Button
+        android:id="@+id/todolist_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/et"
+        android:text="Click here to create a new activity"
+        android:textAllCaps="false"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#000000"
+        android:gravity="center_horizontal"
+        android:text="Incomplete Activity"
+        android:textColor="#ffffff" />
+
+    <ListView
+        android:id="@+id/todolist_incomplete"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="#000000"
+        android:gravity="center_horizontal"
+        android:text="Completed Activity"
+        android:textColor="#ffffff" />
+
+    <ListView
+        android:id="@+id/todolist_completed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

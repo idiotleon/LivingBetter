@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">LivingBetter</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_button_title">Login</string>
+    <string name="signUP_button_title">Sign up</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_home">Search</string>
+    <string name="merge">merge</string>
+
+    <string name="title_section1">Search</string>
+    <string name="title_section2">To Do List</string>
+    <string name="title_section3">Finance</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Search</string>
+    <string name="title_activity_habit_main">HabitMainActivity</string>
+
+    <string name="title_activity_search_result">SearchResult</string>
+    <string name="title_activity_show_detail">ShowDetail</string>
+    <string name="CONSUMER_KEY">p4DR2uIX0qDwaqvO5epWPw</string>
+    <string name="CONSUMER_SECRET">-5hi0yTaCWsI8adDLaYCEAi_pSU</string>
+    <string name="TOKEN">gkLpGKh3K5u-Kk-niVj9AomlqEx6Lbtg</string>
+    <string name="TOKEN_SECRET">Qw6_mCKTLr1M5lzJq7r8E1bJBfA</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Anything interested?</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string-array name="priority_level">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="menu_sort_standard">
+        <item>Priority</item>
+        <item>Deadline</item>
+        <item>Time Added</item>
+        <item>Title</item>
+    </string-array>
+
+    <string-array name="menu_display_standard">
+        <item>Incomplete</item>
+        <item>Complete</item>
+        <item>Not Started</item>
+        <item>All</item>
+    </string-array>
+
+    <string-array name="todoitem_complete_status">
+        <item>Mark as incomplete</item>
+        <item>Mark as not started</item>
+        <item>Mark as complete</item>
+    </string-array>
+    <string name="title_activity_test">Map</string>
+    <string name="title_activity_maps_activity_new">Map</string>
+    <string name="title_activity_maps_activity_for_habit">Map</string>
+    <string name="title_activity_setting">Settings</string>
+
+
+    <string-array name="incomplete_todoitem_operation">
+        <item>Mark as completed</item>
+        <item>Delete</item>
+    </string-array>
+
+    <string-array name="complete_todoitem_operation">
+        <item>Mark as incomplete</item>
+        <item>Delete</item>
+    </string-array>
+
+    <string-array name="simple_todoitem_operation">
+        <item>Mark as completed</item>
+        <item>Delete</item>
+    </string-array>
+
+    <string name="reminderpb_tv_walletmain">expense ratio:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="entertainment_tv_fragment_budget">Entertainment: </string>
+    <string name="Food_tv_fragment_budget">Eating: </string>
+    <string name="Shopping_tv_fragment_budget">Shopping: </string>
+
+</resources>

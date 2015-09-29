@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/et"
+    android:weightSum="6.5"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/todolist_title"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text="Title"
+            android:textSize="20sp"
+            android:textStyle="bold|normal" />
+
+        <TextView
+            android:id="@+id/todolist_time"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:text="time"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/todolist_cate"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:text="category"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/todolist_proirity"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:text="9"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/todolist_button_complete"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/et2"
+        android:focusable="false"
+        android:text="Finish"
+        android:textAllCaps="false"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/todolist_button_update"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/et2"
+        android:focusable="false"
+        android:text="Edit"
+        android:textAllCaps="false"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/todolist_button_delete"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/et2"
+        android:focusable="false"
+        android:text="Delete"
+        android:textAllCaps="false"
+        android:textSize="13sp" />
+
+
+</LinearLayout>
