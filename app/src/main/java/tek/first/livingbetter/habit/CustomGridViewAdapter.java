@@ -64,7 +64,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
 
         textViewName.setText(resultInfoCollection.get(position).getName());
         textViewDistance.setText(resultInfoCollection.get(position).getDistance() + "miles");
-        textViewComment.setText(resultInfoCollection.get(position).getNumber_comment() + "reviews");
+        textViewComment.setText(resultInfoCollection.get(position).getNumberComment() + "reviews");
         String imageUrl = resultInfoCollection.get(position).getImageUrl();
         Log.v(LOG_TAG, "imageUrl: " + imageUrl);
         if (imageUrl != null && imageUrl.length() > 0) {
@@ -79,7 +79,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailFragment.class);
+                Intent intent = new Intent(context, DetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("resultObject", tests);
                 intent.putExtras(bundle);

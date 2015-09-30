@@ -21,7 +21,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.habit.DisplayFragment;
 import tek.first.livingbetter.setting.SettingActivity;
 import tek.first.livingbetter.todolist.TodolistFragment;
-import tek.first.livingbetter.wallet.MainActivity_WalletFragment;
+import tek.first.livingbetter.wallet.WalletFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -74,46 +74,32 @@ public class HomeActivity extends AppCompatActivity
     public void onNavigationDrawerItemSelected(int position) {
         Fragment fragment;
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // update the main content by replacing fragments
 
         switch (position) {
             case 0:
                 fragment = DisplayFragment.newInstance(position);
-                ft.replace(R.id.container, fragment);
-                ft.commit();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.commit();
                 mTitle = "Search";
                 break;
             case 1:
                 fragment = TodolistFragment.newInstance(position);
-                ft.replace(R.id.container, fragment);
-                ft.commit();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.commit();
                 mTitle = "To Do List";
                 break;
             case 2:
-                fragment = MainActivity_WalletFragment.newInstance(position);
-                ft.replace(R.id.container, fragment);
-                ft.commit();
+                fragment = WalletFragment.newInstance(position);
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.commit();
                 mTitle = "Finance";
                 break;
             default:
-                Crouton.makeText(HomeActivity.this, " Something is wrong.", Style.ALERT).show();
+                Crouton.makeText(HomeActivity.this, "Something went wrong.", Style.ALERT).show();
         }
 
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
     }
 
     public void restoreActionBar() {
@@ -152,46 +138,5 @@ public class HomeActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((HomeActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
     }
 }

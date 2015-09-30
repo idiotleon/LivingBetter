@@ -126,7 +126,7 @@ public class BudgetFragment extends Fragment {
                 Fragment fragment;
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                fragment = MainActivity_WalletFragment.newInstance(2);
+                fragment = WalletFragment.newInstance(2);
                 ft.replace(R.id.container, fragment);
                 ft.commit();
             }
