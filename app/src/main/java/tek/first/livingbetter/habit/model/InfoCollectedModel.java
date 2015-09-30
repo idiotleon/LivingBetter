@@ -10,28 +10,28 @@ public class InfoCollectedModel implements Parcelable{
     private int numberComment;
     private String category;
     private String imageUrl;
-    private String snippet_text;
+    private String snippetText;
     private String address;
     private String phoneNumber;
     private String mobileUrl;
     private double distance;
     private double latitude;
-    private double longtitude;
+    private double longitude;
 
-    public InfoCollectedModel(String name, float rating, int numberComment, String category, String imageUrl, String snippet_text,
-                              String address, String phoneNumber, String mobileUrl, double distance, double latitude, double longtitude) {
+    public InfoCollectedModel(String name, float rating, int numberComment, String category, String imageUrl, String snippetText,
+                              String address, String phoneNumber, String mobileUrl, double distance, double latitude, double longitude) {
         this.name = name;
         this.rating = rating;
         this.numberComment = numberComment;
         this.category = category;
         this.imageUrl = imageUrl;
-        this.snippet_text = snippet_text;
+        this.snippetText = snippetText;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.mobileUrl = mobileUrl;
         this.distance = distance;
         this.latitude = latitude;
-        this.longtitude=longtitude;
+        this.longitude = longitude;
     }
 
     protected InfoCollectedModel(Parcel in) {
@@ -40,13 +40,13 @@ public class InfoCollectedModel implements Parcelable{
         numberComment = in.readInt();
         category = in.readString();
         imageUrl = in.readString();
-        snippet_text = in.readString();
+        snippetText = in.readString();
         address = in.readString();
         phoneNumber = in.readString();
         mobileUrl = in.readString();
         distance = in.readDouble();
         latitude = in.readDouble();
-        longtitude = in.readDouble();
+        longitude = in.readDouble();
     }
 
     public static final Creator<InfoCollectedModel> CREATOR = new Creator<InfoCollectedModel>() {
@@ -101,12 +101,12 @@ public class InfoCollectedModel implements Parcelable{
         this.imageUrl = imageUrl;
     }
 
-    public String getSnippet_text() {
-        return snippet_text;
+    public String getSnippetText() {
+        return snippetText;
     }
 
-    public void setSnippet_text(String snippet_text) {
-        this.snippet_text = snippet_text;
+    public void setSnippetText(String snippetText) {
+        this.snippetText = snippetText;
     }
 
     public String getAddress() {
@@ -145,8 +145,8 @@ public class InfoCollectedModel implements Parcelable{
         return latitude;
     }
 
-    public double getLongtitude() {
-        return longtitude;
+    public double getLongitude() {
+        return longitude;
     }
 
     @Override
@@ -161,12 +161,12 @@ public class InfoCollectedModel implements Parcelable{
         dest.writeInt(numberComment);
         dest.writeString(category);
         dest.writeString(imageUrl);
-        dest.writeString(snippet_text);
+        dest.writeString(snippetText);
         dest.writeString(address);
         dest.writeString(phoneNumber);
         dest.writeString(mobileUrl);
         dest.writeDouble(distance);
         dest.writeDouble(latitude);
-        dest.writeDouble(longtitude);
+        dest.writeDouble(longitude);
     }
 }

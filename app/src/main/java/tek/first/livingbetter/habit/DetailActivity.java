@@ -119,12 +119,12 @@ public class DetailActivity extends AppCompatActivity {
 
         detailPhone.setText(infoCollected.getPhoneNumber());
         detailWebsite.setText(infoCollected.getMobileUrl());
-        detailComments.setText(infoCollected.getSnippet_text());
+        detailComments.setText(infoCollected.getSnippetText());
         mapAddress = infoCollected.getAddress();
         webUrl = infoCollected.getMobileUrl();
         phone = infoCollected.getPhoneNumber();
         latitudeDetail = infoCollected.getLatitude();
-        longitudeDetail = infoCollected.getLongtitude();
+        longitudeDetail = infoCollected.getLongitude();
 
         detailAddress.setOnClickListener(new View.OnClickListener() {
             @Override
