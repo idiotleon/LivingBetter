@@ -8,25 +8,36 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -35,6 +46,9 @@ import tek.first.livingbetter.habit.model.InfoCollectedModel;
 import tek.first.livingbetter.helper.DatabaseHelper;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = DetailActivity.class.getSimpleName();
+
     private GoogleMap googleMap;
     private LocationManager locationManager;
     private TextView detailName, detailReviews, detailDistance, detailDescription,
@@ -78,34 +92,11 @@ public class DetailActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put(DatabaseHelper.TODOLIST_ITEM_COLUMN_TITLE, infoCollected.getName());
                     values.put(DatabaseHelper.TODOLIST_ITEM_COLUMN_TIME_DATE_CREATED, sdf.format(new Date()));
-
                     helper.insertData(values);
                 }
-
                 finish();
             }
         });
-
-        MapFragment mapFragment =
-                ((MapFragment) getFragmentManager().findFragmentById(R.id.detail_map));
-
-        if (mapFragment.getMap() == null)
-            Log.e("getMap: ", "null");
-        else {
-            googleMap = mapFragment.getMap();
-            //googleMap.setMyLocationEnabled(true);
-            googleMap.getUiSettings().setZoomGesturesEnabled(true);
-        }
-
-        try {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-            LatLng latLng = new LatLng(latitudeDetail, longitudeDetail);
-            googleMap.addMarker(new MarkerOptions().position(latLng));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            googleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -121,6 +112,11 @@ public class DetailActivity extends AppCompatActivity {
         detailDistance.setText(infoCollected.getDistance() + "miles");
         detailDescription.setText(infoCollected.getCategory());
         detailAddress.setText(infoCollected.getAddress());
+        Log.v(LOG_TAG, "detailAddress: " + infoCollected.getAddress());
+
+        ConvertAddressToLocation convertAddressToLocation = new ConvertAddressToLocation();
+        convertAddressToLocation.execute(infoCollected.getAddress());
+
         detailPhone.setText(infoCollected.getPhoneNumber());
         detailWebsite.setText(infoCollected.getMobileUrl());
         detailComments.setText(infoCollected.getSnippet_text());
@@ -129,25 +125,6 @@ public class DetailActivity extends AppCompatActivity {
         phone = infoCollected.getPhoneNumber();
         latitudeDetail = infoCollected.getLatitude();
         longitudeDetail = infoCollected.getLongtitude();
-
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-            }
-        };
 
         detailAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,5 +177,170 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class ConvertAddressToLocation extends AsyncTask<String, Void, double[]> {
+
+        static final String GOOGLE_MAP_GEOCODING_BASE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+        static final String KEY = "&key=";
+        double[] location = new double[]{0.0, 0.0};
+
+        @Override
+        protected double[] doInBackground(String... params) {
+            String address = params[0];
+            String API_KEY = getResources().getString(R.string.google_map_geocoding_api_key);
+
+            String addressUrl = parseStringAddressToUrl(address, API_KEY);
+
+            String urlString = GOOGLE_MAP_GEOCODING_BASE_URL + addressUrl;
+
+            HttpURLConnection httpURLConnection = null;
+            BufferedReader bufferedReader = null;
+            StringBuffer stringBuffer = null;
+            String locationInfoJsonStr = null;
+
+            try {
+                URL url = new URL(urlString);
+                httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.connect();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                if (inputStream == null)
+                    return null;
+
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                stringBuffer = new StringBuffer();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(line + "\n");
+                }
+                if (stringBuffer.length() == 0)
+                    return null;
+
+                locationInfoJsonStr = stringBuffer.toString();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+            } finally {
+                if (httpURLConnection != null) httpURLConnection.disconnect();
+                if (bufferedReader != null) {
+                    try {
+                        bufferedReader.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+
+            try {
+                location = parseJSONStringToLatitudeAndLongitude(locationInfoJsonStr);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return location;
+        }
+
+        private double[] parseJSONStringToLatitudeAndLongitude(String locationInfoJsonStr) throws JSONException {
+
+            String LB_RESULT = "results";
+            String LB_GEOMETRY = "geometry";
+            String LB_LOCATION = "location";
+            String LB_LAT = "lat";
+            String LB_LNG = "lng";
+
+            JSONObject jsonObjectResults = new JSONObject(locationInfoJsonStr);
+            JSONArray jsonArray = jsonObjectResults.getJSONArray(LB_RESULT);
+            JSONObject firstJsonObjectResult = jsonArray.getJSONObject(0);
+            JSONObject jsonObjectGeometry = firstJsonObjectResult.getJSONObject(LB_GEOMETRY);
+            JSONObject jsonObjectLocation = jsonObjectGeometry.getJSONObject(LB_LOCATION);
+            double latitude = jsonObjectLocation.getDouble(LB_LAT);
+            Log.v(LOG_TAG, "latitude, parseJSONStringToLatitudeAndLongitude(String locationInfoJsonStr): " + latitude);
+            double longitude = jsonObjectLocation.getDouble(LB_LNG);
+            Log.v(LOG_TAG, "longitude, parseJSONStringToLatitudeAndLongitude(String locationInfoJsonStr): " + longitude);
+            double[] location = new double[]{latitude, longitude};
+
+            return location;
+        }
+
+        private String parseStringAddressToUrl(String address, String API_KEY) {
+
+            String parsedAddress = "";
+
+            String[] addressSplitByEnter = address.split(System.getProperty("line.separator"));
+
+            String[] addressPart1 = addressSplitByEnter[0].split("\\s+");
+            for (int i = 0; i < addressPart1.length - 1; i++) {
+                parsedAddress += addressPart1[i] + "+";
+            }
+            parsedAddress += addressPart1[addressPart1.length - 1] + ",+";
+            if (addressSplitByEnter.length > 1) {
+
+                String[] addressPart2 = addressSplitByEnter[1].split("\\s+");
+                for (int i = 0; i < addressPart2.length - 1; i++) {
+                    parsedAddress += addressPart2[i] + "+";
+                }
+                parsedAddress += addressPart2[addressPart2.length - 1];
+            }
+
+/*            String[] addressSplitByComma = address.split(",");
+            String[] addressPart3 = addressSplitByComma[1].split("\\s+");
+            parsedAddress += addressPart3[0];*/
+
+            parsedAddress += KEY + API_KEY;
+            Log.v(LOG_TAG, "parsedAddress: " + parsedAddress);
+
+            return parsedAddress;
+        }
+
+        @Override
+        protected void onPostExecute(double[] doubles) {
+            super.onPostExecute(doubles);
+
+            MapFragment mapFragment =
+                    ((MapFragment) getFragmentManager().findFragmentById(R.id.detail_map));
+
+            if (mapFragment.getMap() == null)
+                Log.e(LOG_TAG, "googlemap is null");
+            else {
+                googleMap = mapFragment.getMap();
+                //googleMap.setMyLocationEnabled(true);
+                googleMap.getUiSettings().setZoomGesturesEnabled(true);
+            }
+
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            locationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                }
+
+                @Override
+                public void onStatusChanged(String s, int i, Bundle bundle) {
+                }
+
+                @Override
+                public void onProviderEnabled(String s) {
+                }
+
+                @Override
+                public void onProviderDisabled(String s) {
+                }
+            };
+
+            try {
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                LatLng latLng = new LatLng(location[0], location[1]);
+                Marker placeOfInterests = googleMap.addMarker(new MarkerOptions().position(latLng).title(infoCollected.getName()));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

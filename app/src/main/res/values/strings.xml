@@ -31,6 +31,7 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="google_map_api_key">AIzaSyBilkZFj47omx5UctqMvcqS2Be49uoLvcY</string>
+    <string name="google_map_geocoding_api_key">AIzaSyBw6j5_uW6BCsT8VDp3yuKzLjp7pL2OOH4</string>
 
     <string-array name="priority_level">
         <item>1</item>
