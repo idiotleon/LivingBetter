@@ -12,10 +12,11 @@ public class LivingBetterContract {
             = "tek.first.livingbetter.LivingBetterProvider";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
-    public static final class HabitInfo implements BaseColumns {
+    public static final class HabitInfoEntry implements BaseColumns {
 
         public static final String TABLE_NAME = "habit_table";
 
+        public static final String COLUMN_ID = "habit_id";
         public static final String COLUMNE_NAME = "habit_name";
         public static final String COLUMN_RATING = "habit_rating";
         public static final String COLUMN_NUMBER_OF_REVIEWS = "habit_number_of_reviews";

@@ -11,8 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e87e6056-a8b4-4a41-8bdf-2e05111f84b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DetailActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/model/InfoCollectedModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/model/InfoCollectedModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContract.java" />
     </list>
     <ignored path="LivingBetter.iws" />
@@ -28,28 +27,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="InfoCollectedModel.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/model/InfoCollectedModel.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.39285713">
-                    <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-                    <folding>
-                      <element signature="imports" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -63,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LivingBetterContract.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContract.java">
+      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6785714">
-              <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.85714287">
+              <caret line="40" column="45" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1820,10 +1797,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/service/LocationService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContentProvider.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/model/InfoCollectedModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java" />
       </list>
     </option>
   </component>
@@ -2516,16 +2493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContentProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2556,7 +2523,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/model/InfoCollectedModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39285713">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2566,8 +2533,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/LivingBetterContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6785714">
-          <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.32142857">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/provider/DatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85714287">
+          <caret line="40" column="45" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
