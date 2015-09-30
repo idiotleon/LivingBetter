@@ -1,6 +1,8 @@
 package tek.first.livingbetter.habit.jsonparsing;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,19 +19,23 @@ import java.util.ArrayList;
 import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.Distance;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
+import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.provider.LivingBetterContract;
 
 
 /**
  * Code sample for accessing the Yelp API V2.
- * <p/>
+ * <p>
  * This program demonstrates the capability of the Yelp API version 2.0 by using the Search API to
  * query for businesses by a search term and location, and the Business API to query additional
  * information about the top result from the search query.
- * <p/>
- * <p/>
+ * <p>
+ * <p>
  * See <a href="http://www.yelp.com/developers/documentation">Yelp Documentation</a> for more info.
  */
 public class Yelp {
+
+    private static final String LOG_TAG = Yelp.class.getSimpleName();
 
   /*
    * Update OAuth credentials below from the Yelp Developers API site:
@@ -78,7 +84,7 @@ public class Yelp {
         return response.getBody();
     }
 
-    public ArrayList<InfoCollectedModel> processJson(String jsonString) throws JSONException {
+    public ArrayList<InfoCollectedModel> processJson(Context context, String jsonString) throws JSONException {
 
         final String LB_YELP_BUSINESS = "businesses";
         final String LB_YELP_REGION = "region";
@@ -104,13 +110,20 @@ public class Yelp {
         JSONObject center = region.getJSONObject(LB_YELP_CENTER);
         String currentLatitude = center.getString(LB_YELP_LATITUDE);
         String currentLongitude = center.getString(LB_YELP_LONGITUDE);
+
+        ContentValues contentValues = new ContentValues();
+
         for (int i = 0; i < businesses.length(); i++) {
             JSONObject business = businesses.getJSONObject(i);
             String name = business.getString(LB_YELP_NAME);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_NAME, name);
             float rating = Float.parseFloat(business.getString(LB_YELP_RATING));
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_RATING, rating);
             int reviewCount = Integer.parseInt(business.getString(LB_YELP_REVIEW_COUNT));
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_NUMBER_OF_REVIEWS, reviewCount);
             String category = business.getString(LB_YELP_CATEGORIES);
             String categoryResult = handleCategory(category);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_CATEGORY, categoryResult);
             String imageUrl;
             try {
                 imageUrl = business.getString(LB_YELP_IMAGE_URL);
@@ -119,35 +132,49 @@ public class Yelp {
                 imageUrl = "";
                 ex.printStackTrace();
             }
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_IMAGE_URL, imageUrl);
+
             String snippetText = business.getString(LB_YELP_SNIPPET_TEXT);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_SNIPPET_TEXT, snippetText);
             String phoneNumber;
             try {
                 phoneNumber = business.getString(LB_YELP_DISPLAY_PHONE);
             } catch (Exception e) {
                 phoneNumber = "";
             }
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_PHONE_NUMBER, phoneNumber);
 
             String mobileUrl = business.getString(LB_YELP_MOBILE_URL);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_MOBILE_URL, mobileUrl);
+
             JSONObject location = business.getJSONObject(LB_YELP_LOCATION);
             String displayAddress = location.getString(LB_YELP_DISPLAY_ADDRESS);
             String address = handleAddress(displayAddress);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_ADDRESS, address);
 
             JSONObject coordinate = location.getJSONObject(LB_YELP_COORDINATE);
             String resLatitude = coordinate.getString(LB_YELP_LATITUDE);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_LATITUDE, resLatitude);
+
             String resLongitude = coordinate.getString(LB_YELP_LONGITUDE);
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_LONGITUDE, resLongitude);
+
             Double distance = Distance.getDistance(Double.parseDouble(currentLatitude),
                     Double.parseDouble(currentLongitude), Double.parseDouble(resLatitude), Double.parseDouble(resLongitude));
+            contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_DISTANCE, distance);
 
             InfoCollectedModel infoCollectedModel = new InfoCollectedModel(name, rating, reviewCount, categoryResult, imageUrl, snippetText, address
                     , phoneNumber, mobileUrl, distance, Double.parseDouble(resLatitude), Double.parseDouble(resLongitude));
             resultArrayList.add(infoCollectedModel);
+
+            context.getContentResolver().insert(LivingBetterContract.HabitInfoEntry.CONTENT_URI, contentValues);
         }
 
         return resultArrayList;
     }
 
-    private static String handleAddress(String display_address) {
-        String[] s = display_address.split("\"");
+    private static String handleAddress(String displayAddress) {
+        String[] s = displayAddress.split("\"");
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length; i++) {
             if (s[i].length() > 1) {
@@ -155,7 +182,9 @@ public class Yelp {
                 sb.append("\n");
             }
         }
-        return sb.toString().substring(0, sb.length() - 1);
+        String result = sb.toString().substring(0, sb.length() - 1);
+        Log.v(LOG_TAG, "result, handleAddress(String displayAddress): " + result);
+        return result;
     }
 
     private static String handleCategory(String category) {
@@ -172,6 +201,8 @@ public class Yelp {
             sb.append(list.get(i));
             sb.append(",");
         }
-        return sb.toString().substring(0, sb.length() - 1);
+        String result = sb.toString().substring(0, sb.length() - 1);
+        Log.v(LOG_TAG, "result, handleCategory(String category): " + result);
+        return result;
     }
 }

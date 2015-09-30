@@ -41,6 +41,8 @@ import tek.first.livingbetter.habit.model.InfoCollectedModel;
 
 public class DisplayFragment extends Fragment {
 
+    private static final String LOG_TAG = DisplayFragment.class.getSimpleName();
+
     private GridView gridViewFood, gridViewEntertainment, gridViewShopping;
     private ArrayList<InfoCollectedModel> foodArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> entertainmentArrayList = new ArrayList<>();
@@ -65,8 +67,8 @@ public class DisplayFragment extends Fragment {
         inflater.inflate(R.menu.menu_main_fragment, menu);
 
         // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager)getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView)menu.findItem(R.id.action_search).getActionView();
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
     }
 
@@ -77,7 +79,6 @@ public class DisplayFragment extends Fragment {
                 initInfo();
                 break;
             case R.id.action_search:
-
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -211,16 +212,16 @@ public class DisplayFragment extends Fragment {
                     Yelp yelp = Yelp.getYelp(getActivity());
                     try {
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        Log.v("shopping:", sharedPreferences.getString("shop", "shopping"));
+                        Log.v(LOG_TAG, sharedPreferences.getString("shop", "shopping"));
 
                         String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], "20");
                         String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], "20");
                         String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], "20");
 
                         Log.v("json res:", shoppingJson);
-                        foodArrayList = yelp.processJson(foodJson);
-                        entertainmentArrayList = yelp.processJson(entertainmentJson);
-                        shoppingArrayList = yelp.processJson(shoppingJson);
+                        foodArrayList = yelp.processJson(getActivity(), foodJson);
+                        entertainmentArrayList = yelp.processJson(getActivity(), entertainmentJson);
+                        shoppingArrayList = yelp.processJson(getActivity(), shoppingJson);
 
                         Log.e("res size:", String.valueOf(shoppingArrayList.size()));
                     } catch (JSONException e) {

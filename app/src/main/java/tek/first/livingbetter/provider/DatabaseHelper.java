@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 LivingBetterContract.HabitInfoEntry.COLUMN_LATITUDE + " REAL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_LONGITUDE + " REAL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_DISTANCE + " REAL, " +
-                " UNIQUE(" + LivingBetterContract.HabitInfoEntry.COLUMN_NAME + ") ON CONFLICT REPLACE)";
+                " UNIQUE(" + LivingBetterContract.HabitInfoEntry.COLUMN_ADDRESS + ") ON CONFLICT REPLACE)";
         Log.v(LOG_TAG, "createHabitTableQuery: " + createHabitTableQuery);
         db.execSQL(createHabitTableQuery);
     }
