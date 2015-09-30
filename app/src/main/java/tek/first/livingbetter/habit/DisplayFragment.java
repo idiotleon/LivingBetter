@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.habit.jsonparsing.ProcessJSON;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
 
@@ -46,7 +45,7 @@ public class DisplayFragment extends Fragment {
     private ArrayList<InfoCollectedModel> foodArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> entertainmentArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> shoppingArrayList = new ArrayList<>();
-    private double[] currentaddress = new double[2];
+    private double[] currentAddress = new double[2];
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean refersh;
@@ -119,8 +118,8 @@ public class DisplayFragment extends Fragment {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                currentaddress[0] = location.getLatitude();
-                currentaddress[1] = location.getLongitude();
+                currentAddress[0] = location.getLatitude();
+                currentAddress[1] = location.getLongitude();
                 // initData();
             }
 
@@ -175,11 +174,11 @@ public class DisplayFragment extends Fragment {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, locationListener);
             if (locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null) {
-                currentaddress[0] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
-                currentaddress[1] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
+                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
             } else if (locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) != null) {
-                currentaddress[0] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
-                currentaddress[1] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
+                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
+                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -207,21 +206,21 @@ public class DisplayFragment extends Fragment {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                if (currentaddress[0] == 0) {
+                if (currentAddress[0] == 0) {
                 } else {
                     Yelp yelp = Yelp.getYelp(getActivity());
                     try {
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        Log.e("shopping:", sharedPreferences.getString("shop", "shopping"));
+                        Log.v("shopping:", sharedPreferences.getString("shop", "shopping"));
 
-                        String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentaddress[0], currentaddress[1], "7");
-                        String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentaddress[0], currentaddress[1], "7");
-                        String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentaddress[0], currentaddress[1], "7");
+                        String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], "20");
+                        String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], "20");
+                        String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], "20");
 
-                        Log.e("json res:", shoppingJson);
-                        foodArrayList = ProcessJSON.processJson(foodJson);
-                        entertainmentArrayList = ProcessJSON.processJson(entertainmentJson);
-                        shoppingArrayList = ProcessJSON.processJson(shoppingJson);
+                        Log.v("json res:", shoppingJson);
+                        foodArrayList = yelp.processJson(foodJson);
+                        entertainmentArrayList = yelp.processJson(entertainmentJson);
+                        shoppingArrayList = yelp.processJson(shoppingJson);
 
                         Log.e("res size:", String.valueOf(shoppingArrayList.size()));
                     } catch (JSONException e) {

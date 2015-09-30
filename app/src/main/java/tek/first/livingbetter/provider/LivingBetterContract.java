@@ -19,7 +19,7 @@ public class LivingBetterContract {
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
 
         public static final String COLUMN_ID = "habit_id";
-        public static final String COLUMNE_NAME = "habit_name";
+        public static final String COLUMN_NAME = "habit_name";
         public static final String COLUMN_RATING = "habit_rating";
         public static final String COLUMN_NUMBER_OF_REVIEWS = "habit_number_of_reviews";
         public static final String COLUMN_CATEGORY = "habit_category";

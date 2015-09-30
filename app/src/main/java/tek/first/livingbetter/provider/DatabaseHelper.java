@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.v(LOG_TAG, "onCreate() executed.");
         final String createHabitTableQuery = "CREATE TABLE " + LivingBetterContract.HabitInfoEntry.TABLE_NAME + " (" +
                 LivingBetterContract.HabitInfoEntry.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + " TEXT NOT NULL, " +
+                LivingBetterContract.HabitInfoEntry.COLUMN_NAME + " TEXT NOT NULL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_RATING + " REAL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_NUMBER_OF_REVIEWS + " INTEGER, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_CATEGORY + " TEXT, " +
@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 LivingBetterContract.HabitInfoEntry.COLUMN_LATITUDE + " REAL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_LONGITUDE + " REAL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_DISTANCE + " REAL, " +
-                " UNIQUE(" + LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + ") ON CONFLICT REPLACE)";
+                " UNIQUE(" + LivingBetterContract.HabitInfoEntry.COLUMN_NAME + ") ON CONFLICT REPLACE)";
         Log.v(LOG_TAG, "createHabitTableQuery: " + createHabitTableQuery);
         db.execSQL(createHabitTableQuery);
     }

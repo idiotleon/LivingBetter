@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
@@ -56,7 +55,7 @@ public class LivingBetterContentProvider extends ContentProvider {
             case HABIT:
                 String habitName = uri.getPathSegments().get(1);
                 sqLiteQueryBuilder.setTables(LivingBetterContract.HabitInfoEntry.TABLE_NAME);
-                sqLiteQueryBuilder.appendWhere(LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + " = " + habitName);
+                sqLiteQueryBuilder.appendWhere(LivingBetterContract.HabitInfoEntry.COLUMN_NAME + " = " + habitName);
                 break;
         }
 
@@ -112,7 +111,7 @@ public class LivingBetterContentProvider extends ContentProvider {
             case HABITS:
                 name = uri.getPathSegments().get(1);
                 distance = uri.getPathSegments().get(2);
-                selection = LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + " = ?&&"
+                selection = LivingBetterContract.HabitInfoEntry.COLUMN_NAME + " = ?&&"
                         + LivingBetterContract.HabitInfoEntry.COLUMN_DISTANCE + " = ?";
                 selectionArgs = new String[]{name, distance};
                 if (selection == null) selection = "1";
@@ -140,14 +139,14 @@ public class LivingBetterContentProvider extends ContentProvider {
             case HABIT:
                 name = uri.getPathSegments().get(1);
                 distance = uri.getPathSegments().get(2);
-                selection = LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + "=?&&" +
+                selection = LivingBetterContract.HabitInfoEntry.COLUMN_NAME + "=?&&" +
                         LivingBetterContract.HabitInfoEntry.COLUMN_DISTANCE + "=?";
                 selectionArgs = new String[]{name, distance};
                 updateCount = database.update(LivingBetterContract.HabitInfoEntry.TABLE_NAME, values, selection, selectionArgs);
                 break;
         }
         getContext().getContentResolver().notifyChange(uri, null);
-        
+
         return updateCount;
     }
 }

@@ -28,7 +28,6 @@ import java.util.Comparator;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.habit.jsonparsing.ProcessJSON;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
 
@@ -109,7 +108,7 @@ public class SearchResultFragment extends Fragment {
                         try {
                             Yelp yelp = Yelp.getYelp(getActivity());
                             String food_json = yelp.search(search, location_search[0], location_search[1], "20");
-                            result_list.addAll(ProcessJSON.processJson(food_json));
+                            result_list.addAll(yelp.processJson(food_json));
                         } catch (JSONException e) {
 
                         }
@@ -139,7 +138,7 @@ public class SearchResultFragment extends Fragment {
                                 Yelp yelp = Yelp.getYelp(getActivity());
                                 String food_json = yelp.search(searchagain, location_search[0], location_search[1], "20");
                                 Log.e("search again:", food_json);
-                                result_list.addAll(ProcessJSON.processJson(food_json));
+                                result_list.addAll(yelp.processJson(food_json));
                                 Log.e("search again size:", String.valueOf(result_list.size()));
                             } catch (JSONException e) {
                             }
