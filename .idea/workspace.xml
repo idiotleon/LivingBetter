@@ -10,15 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87e6056-a8b4-4a41-8bdf-2e05111f84b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DisplayFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DisplayFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/jsonparsing/Yelp.java" afterPath="$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/jsonparsing/Yelp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="e87e6056-a8b4-4a41-8bdf-2e05111f84b5" name="Default" comment="" />
     <ignored path="LivingBetter.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,8 +50,8 @@
       <file leaf-file-name="DisplayFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DisplayFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44748202">
-              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.41294965">
+              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2466,8 +2458,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/DisplayFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44748202">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.41294965">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
           <folding />
         </state>
       </provider>
