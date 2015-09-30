@@ -123,6 +123,7 @@ public class Yelp {
             contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_NUMBER_OF_REVIEWS, reviewCount);
             String category = business.getString(LB_YELP_CATEGORIES);
             String categoryResult = handleCategory(category);
+            Log.v(LOG_TAG, "categoryResult: " + categoryResult);
             contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_CATEGORY, categoryResult);
             String imageUrl;
             try {
@@ -150,6 +151,7 @@ public class Yelp {
             JSONObject location = business.getJSONObject(LB_YELP_LOCATION);
             String displayAddress = location.getString(LB_YELP_DISPLAY_ADDRESS);
             String address = handleAddress(displayAddress);
+            Log.v(LOG_TAG, "address: " + address);
             contentValues.put(LivingBetterContract.HabitInfoEntry.COLUMN_ADDRESS, address);
 
             JSONObject coordinate = location.getJSONObject(LB_YELP_COORDINATE);

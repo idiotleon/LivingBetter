@@ -219,6 +219,7 @@ public class DisplayFragment extends Fragment {
                         String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], "20");
 
                         Log.v("json res:", shoppingJson);
+                        // todo: 1. Get familiar with Yelp Web API; 2. More interactions with "category" (such as: preferences for input from users); 3. how to display info on DisplayFragment
                         foodArrayList = yelp.processJson(getActivity(), foodJson);
                         entertainmentArrayList = yelp.processJson(getActivity(), entertainmentJson);
                         shoppingArrayList = yelp.processJson(getActivity(), shoppingJson);
