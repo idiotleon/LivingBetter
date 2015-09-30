@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 
 public class Distance {
 
-    public static double getDistance(double lat1, double lon1, double lat2, double lon2)
-    {
+    public static double getDistance(double lat1, double lon1, double lat2, double lon2) {
         double a = 6378137, b = 6356752.314245, f = 1 / 298.257223563;
         double L = Math.toRadians(lon2 - lon1);
         double U1 = Math.atan((1 - f) * Math.tan(Math.toRadians(lat1)));
@@ -19,16 +18,14 @@ public class Distance {
         double sigma;
 
         double lambda = L, lambdaP, iterLimit = 100;
-        do
-        {
+        do {
             double sinLambda = Math.sin(lambda), cosLambda = Math.cos(lambda);
             sinSigma = Math.sqrt((cosU2 * sinLambda)
                             * (cosU2 * sinLambda)
                             + (cosU1 * sinU2 - sinU1 * cosU2 * cosLambda)
                             * (cosU1 * sinU2 - sinU1 * cosU2 * cosLambda)
             );
-            if (sinSigma == 0)
-            {
+            if (sinSigma == 0) {
                 return 0;
             }
 
@@ -40,17 +37,16 @@ public class Distance {
 
             double C = f / 16 * cosSqAlpha * (4 + f * (4 - 3 * cosSqAlpha));
             lambdaP = lambda;
-            lambda = 	L + (1 - C) * f * sinAlpha
-                    * 	(sigma + C * sinSigma
-                    * 	(cos2SigmaM + C * cosSigma
-                    * 	(-1 + 2 * cos2SigmaM * cos2SigmaM)
+            lambda = L + (1 - C) * f * sinAlpha
+                    * (sigma + C * sinSigma
+                    * (cos2SigmaM + C * cosSigma
+                    * (-1 + 2 * cos2SigmaM * cos2SigmaM)
             )
             );
 
         } while (Math.abs(lambda - lambdaP) > 1e-12 && --iterLimit > 0);
 
-        if (iterLimit == 0)
-        {
+        if (iterLimit == 0) {
             return 0;
         }
 
@@ -67,9 +63,9 @@ public class Distance {
                         * (-3 + 4 * cos2SigmaM * cos2SigmaM)));
 
         double s = b * A * (sigma - deltaSigma);
-        double res = s/1600;
-        BigDecimal bd   =   new BigDecimal(res);
-        double   f1   =   bd.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double res = s / 1600;
+        BigDecimal bd = new BigDecimal(res);
+        double f1 = bd.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         return f1;
     }
 }

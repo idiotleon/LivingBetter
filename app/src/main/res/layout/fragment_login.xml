@@ -82,7 +82,7 @@
                 android:background="@drawable/et"
                 android:drawableLeft="@drawable/add_user_50"
                 android:onClick="signUp"
-                android:text="@string/signUP_button_title"
+                android:text="@string/signup_button_text"
                 android:textAllCaps="false"
                 android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button" />
 
