@@ -16,6 +16,8 @@ public class LivingBetterContract {
 
         public static final String TABLE_NAME = "habit_table";
 
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
+
         public static final String COLUMN_ID = "habit_id";
         public static final String COLUMNE_NAME = "habit_name";
         public static final String COLUMN_RATING = "habit_rating";
@@ -29,6 +31,9 @@ public class LivingBetterContract {
         public static final String COLUMN_LATITUDE = "habit_latitude";
         public static final String COLUMN_LONGITUDE = "habit_longitude";
         public static final String COLUMN_DISTANCE = "habit_distance";
+
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
     }
 
     public static final class UserInfo implements BaseColumns {

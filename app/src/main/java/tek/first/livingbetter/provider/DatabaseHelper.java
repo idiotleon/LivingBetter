@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.v(LOG_TAG, "onCreate() executed.");
-        String createHabitTableQuery = "CREATE TABLE " + LivingBetterContract.HabitInfoEntry.TABLE_NAME + " (" +
+        final String createHabitTableQuery = "CREATE TABLE " + LivingBetterContract.HabitInfoEntry.TABLE_NAME + " (" +
                 LivingBetterContract.HabitInfoEntry.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 LivingBetterContract.HabitInfoEntry.COLUMNE_NAME + " TEXT NOT NULL, " +
                 LivingBetterContract.HabitInfoEntry.COLUMN_RATING + " REAL, " +
