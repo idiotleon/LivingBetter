@@ -37,71 +37,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ToDoListDisplayActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/todolist/activity/ToDoListDisplayActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45221114">
-              <caret line="346" column="9" selection-start-line="346" selection-start-column="9" selection-end-line="346" selection-end-column="9" />
-              <folding>
-                <element signature="method#onCreateOptionsMenu#0;class#ToDoListDisplayActivity#0" expanded="false" />
-                <element signature="e#9227#9296#0" expanded="true" />
-                <element signature="e#9363#11836#0" expanded="true" />
-                <element signature="e#11835#11836#0" expanded="true" />
-                <element signature="method#setSortingPreference#0;class#ToDoListDisplayActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="todolist_main_activity.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/todolist_main_activity.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.137931">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HabitDisplayFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HabitDisplayFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/HabitDisplayFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.34950072">
+              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#4571:4895" expanded="false" />
                 <element signature="class#4930:5505" expanded="false" />
                 <element signature="method#initGPS#0;class#HabitDisplayFragment#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/HomeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#restoreActionBar#0;class#HomeActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#HomeActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#HomeActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NavigationDrawerFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/NavigationDrawerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1484,7 +1430,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="E:\Downloads\Github\LivingBetter" value="4327110807607" />
+        <entry key="E:\Downloads\Github\LivingBetter" value="4327123876236" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1946,28 +1892,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LivingBetter" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2072,6 +1996,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LivingBetter" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="livingbetter" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="setting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2213,16 +2159,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="about" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LivingBetter" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2519,13 +2455,13 @@
         <state vertical-scroll-proportion="0.2551724">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1201#1202#0" expanded="true" />
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1889#1890#0" expanded="true" />
-            <element signature="e#1913#1914#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1086#1087#0" expanded="false" />
+            <element signature="e#1134#1135#0" expanded="false" />
+            <element signature="e#1201#1202#0" expanded="false" />
+            <element signature="e#1251#1252#0" expanded="false" />
+            <element signature="e#1889#1890#0" expanded="false" />
+            <element signature="e#1913#1914#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2535,10 +2471,10 @@
         <state vertical-scroll-proportion="0.21034482">
           <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
           <folding>
-            <element signature="e#903#921#0" expanded="true" />
-            <element signature="e#1070#1088#0" expanded="true" />
-            <element signature="e#2318#2350#0" expanded="true" />
-            <element signature="e#2627#2655#0" expanded="true" />
+            <element signature="e#903#921#0" expanded="false" />
+            <element signature="e#1070#1088#0" expanded="false" />
+            <element signature="e#2318#2350#0" expanded="false" />
+            <element signature="e#2627#2655#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2706,7 +2642,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="48" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2833,10 +2769,10 @@
         <state vertical-scroll-proportion="0.32524964">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#1607#1647#0" expanded="true" />
-            <element signature="e#1649#1692#0" expanded="true" />
-            <element signature="e#1710#1743#0" expanded="true" />
-            <element signature="e#1745#1785#0" expanded="true" />
+            <element signature="e#1607#1647#0" expanded="false" />
+            <element signature="e#1649#1692#0" expanded="false" />
+            <element signature="e#1710#1743#0" expanded="false" />
+            <element signature="e#1745#1785#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2913,28 +2849,15 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.137931">
+        <state vertical-scroll-proportion="0.17857143">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/HabitDisplayFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#4571:4895" expanded="false" />
-            <element signature="class#4930:5505" expanded="false" />
-            <element signature="method#initGPS#0;class#HabitDisplayFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.23965763">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2947,7 +2870,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/NavigationDrawerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.20542082">
           <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
           <folding />
         </state>
@@ -2955,14 +2878,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/todolist/activity/ToDoListDisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45221114">
-          <caret line="346" column="9" selection-start-line="346" selection-start-column="9" selection-end-line="346" selection-end-column="9" />
+        <state vertical-scroll-proportion="3.4992867">
+          <caret line="340" column="0" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
           <folding>
             <element signature="method#onCreateOptionsMenu#0;class#ToDoListDisplayActivity#0" expanded="false" />
             <element signature="e#9227#9296#0" expanded="true" />
             <element signature="e#9363#11836#0" expanded="true" />
             <element signature="e#11835#11836#0" expanded="true" />
             <element signature="method#setSortingPreference#0;class#ToDoListDisplayActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/HabitDisplayFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34950072">
+          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#4571:4895" expanded="false" />
+            <element signature="class#4930:5505" expanded="false" />
+            <element signature="method#initGPS#0;class#HabitDisplayFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>
