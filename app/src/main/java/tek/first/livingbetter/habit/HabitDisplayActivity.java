@@ -1,6 +1,7 @@
 package tek.first.livingbetter.habit;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.SearchManager;
@@ -15,9 +16,12 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -41,11 +45,9 @@ import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
 
-import static android.support.v4.content.PermissionChecker.checkSelfPermission;
+public class HabitDisplayActivity extends AppCompatActivity {
 
-public class HabitDisplayFragment extends Fragment {
-
-    private static final String LOG_TAG = HabitDisplayFragment.class.getSimpleName();
+    private static final String LOG_TAG = HabitDisplayActivity.class.getSimpleName();
 
     private GridView gridViewFood, gridViewEntertainment, gridViewShopping;
     private ArrayList<InfoCollectedModel> foodArrayList = new ArrayList<>();
@@ -60,39 +62,12 @@ public class HabitDisplayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v(LOG_TAG, "onCreate(Bundle savedInstanceState) executed");
-        setHasOptionsMenu(true);
-    }
+        setContentView(R.layout.habit_display_activity);
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.habit_menu_display_fragment, menu);
-
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_refresh:
-                initInfo();
-                break;
-            case R.id.action_search:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.habit_display_fragment, container, false);
-        gridViewFood = (GridView) view.findViewById(R.id.gridView_food_result);
-        gridViewEntertainment = (GridView) view.findViewById(R.id.gridview_entertainment_result);
-        gridViewShopping = (GridView) view.findViewById(R.id.gridview_shopping_result);
-        final TabHost tabHost = (TabHost) view.findViewById(R.id.tabHost);
+        gridViewFood = (GridView) findViewById(R.id.gridView_food_result);
+        gridViewEntertainment = (GridView) findViewById(R.id.gridview_entertainment_result);
+        gridViewShopping = (GridView) findViewById(R.id.gridview_shopping_result);
+        final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
         TabWidget tabWidget = tabHost.getTabWidget();
 
@@ -138,16 +113,58 @@ public class HabitDisplayFragment extends Fragment {
             }
         };
 
-        return view;
+        handleIntent(getIntent());
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.habit_menu_display_fragment, menu);
+
+        // Associate habit_searchable configuration with the SearchView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+            SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setIconifiedByDefault(false);
+        }
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        Log.v(LOG_TAG, "onNewIntent(Intent intent) executed.");
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        Log.v(LOG_TAG, "handleIntent(Intent intent) executed.");
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String keyWord = intent.getStringExtra(SearchManager.QUERY);
+            Log.v(LOG_TAG, "keyword: " + keyWord);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                initInfo();
+                return true;
+            case R.id.action_search:
+                onSearchRequested();
+                return true;
+            default:
+                return false;
+        }
+    }
 
     private void initGPS() {
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (!locationManager
                 .isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             refersh = true;
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(HabitDisplayActivity.this);
             dialog.setMessage("Please open GPS to locate your position");
             dialog.setPositiveButton("OK",
                     new android.content.DialogInterface.OnClickListener() {
@@ -171,33 +188,27 @@ public class HabitDisplayFragment extends Fragment {
         }
     }
 
-
     private void updateLocation() {
         try {
-            if (checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    && checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(HabitDisplayActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(HabitDisplayActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
-/*                public void requestPermissions (@NonNull String[]permissions,int requestCode){
-
-                }*/
+                //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
                 // here to request the missing permissions, and then overriding
-/*                @Override
-                public void onRequestPermissionsResult ( int requestCode, String[] permissions,
-                int[] grantResults){
-
-                }*/
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for Activity#requestPermissions for more details.
-            } else {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, locationListener);
-                if (locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null) {
-                    currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
-                    currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
-                } else if (locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) != null) {
-                    currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
-                    currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
-                }
+                return;
+            }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, locationListener);
+            if (locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null) {
+                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
+                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+            } else if (locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) != null) {
+                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
+                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -207,7 +218,7 @@ public class HabitDisplayFragment extends Fragment {
     private void initInfo() {
         Log.v(LOG_TAG, "initInfo() executed.");
         if (!isOnline()) {
-            Crouton.makeText(getActivity(), "Network Error", Style.ALERT).show();
+            Crouton.makeText(HabitDisplayActivity.this, "Network Error", Style.ALERT).show();
         } else {
             initGPS();
             updateLocation();
@@ -229,22 +240,22 @@ public class HabitDisplayFragment extends Fragment {
                 if (currentAddress[0] == 0) {
                     Log.e(LOG_TAG, "currentAddress[0] == 0");
                 } else {
-                    Yelp yelp = Yelp.getYelp(getActivity());
+                    Yelp yelp = Yelp.getYelp(HabitDisplayActivity.this);
                     try {
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HabitDisplayActivity.this);
                         Log.v(LOG_TAG, sharedPreferences.getString("shop", "shopping"));
 
                         String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], "20");
                         String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], "20");
                         String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], "20");
 
-                        Log.v(LOG_TAG, "json res:" + shoppingJson);
+//                        Log.v(LOG_TAG, "json res:" + shoppingJson);
                         // todo: 1. Get familiar with Yelp Web API; 2. More interactions with "category" (such as: preferences for input from users); 3. how to display info on
-                        foodArrayList = yelp.processJson(getActivity(), foodJson);
-                        entertainmentArrayList = yelp.processJson(getActivity(), entertainmentJson);
-                        shoppingArrayList = yelp.processJson(getActivity(), shoppingJson);
+                        foodArrayList = yelp.processJson(HabitDisplayActivity.this, foodJson);
+                        entertainmentArrayList = yelp.processJson(HabitDisplayActivity.this, entertainmentJson);
+                        shoppingArrayList = yelp.processJson(HabitDisplayActivity.this, shoppingJson);
 
-                        Log.v(LOG_TAG, "res size: " + String.valueOf(shoppingArrayList.size()));
+//                        Log.v(LOG_TAG, "res size: " + String.valueOf(shoppingArrayList.size()));
                     } catch (JSONException ex) {
                         ex.printStackTrace();
                     }
@@ -254,9 +265,9 @@ public class HabitDisplayFragment extends Fragment {
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                gridViewFood.setAdapter(new CustomGridViewAdapter(getActivity(), foodArrayList));
-                gridViewEntertainment.setAdapter(new CustomGridViewAdapter(getActivity(), entertainmentArrayList));
-                gridViewShopping.setAdapter(new CustomGridViewAdapter(getActivity(), shoppingArrayList));
+                gridViewFood.setAdapter(new CustomGridViewAdapter(HabitDisplayActivity.this, foodArrayList));
+                gridViewEntertainment.setAdapter(new CustomGridViewAdapter(HabitDisplayActivity.this, entertainmentArrayList));
+                gridViewShopping.setAdapter(new CustomGridViewAdapter(HabitDisplayActivity.this, shoppingArrayList));
             }
         }.execute();
     }
@@ -264,7 +275,7 @@ public class HabitDisplayFragment extends Fragment {
     public boolean isOnline() {
         boolean status = false;
         try {
-            ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getNetworkInfo(0);
             if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
                 status = true;
@@ -278,13 +289,5 @@ public class HabitDisplayFragment extends Fragment {
             return false;
         }
         return status;
-    }
-
-    public static Fragment newInstance(int position) {
-        Fragment fragment = new HabitDisplayFragment();
-        Bundle args = new Bundle();
-        args.putInt("selection", position);
-        fragment.setArguments(args);
-        return fragment;
     }
 }

@@ -27,7 +27,7 @@
     <string name="TOKEN_SECRET">xgdmJdIRqMA-c3y2m5GmxsYyMNk</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_search">Search</string>
-    <string name="search_hint">Anything interested?</string>
+    <string name="search_hint">Anything interested in?</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="google_map_api_key">AIzaSyBilkZFj47omx5UctqMvcqS2Be49uoLvcY</string>

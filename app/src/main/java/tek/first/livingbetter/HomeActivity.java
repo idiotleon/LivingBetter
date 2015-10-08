@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-import tek.first.livingbetter.habit.HabitDisplayFragment;
+import tek.first.livingbetter.habit.HabitDisplayActivity;
 import tek.first.livingbetter.setting.SettingActivity;
 import tek.first.livingbetter.todolist.activity.ToDoListDisplayActivity;
 import tek.first.livingbetter.wallet.WalletFragment;
@@ -78,9 +78,8 @@ public class HomeActivity extends AppCompatActivity
 
         switch (position) {
             case 0:
-                fragment = HabitDisplayFragment.newInstance(position);
-                fragmentTransaction.replace(R.id.container, fragment);
-                fragmentTransaction.commit();
+                Intent habitIntent = new Intent(HomeActivity.this, HabitDisplayActivity.class);
+                startActivity(habitIntent);
                 mTitle = "Search";
                 break;
             case 1:

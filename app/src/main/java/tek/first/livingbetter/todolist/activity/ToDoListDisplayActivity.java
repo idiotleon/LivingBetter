@@ -1,15 +1,11 @@
 package tek.first.livingbetter.todolist.activity;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -18,11 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
-import tek.first.livingbetter.NavigationDrawerFragment;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.habit.HabitDisplayFragment;
 import tek.first.livingbetter.provider.DatabaseHelper;
 import tek.first.livingbetter.todolist.fragment.CompletedDetailedItemsDisplayFragment;
 import tek.first.livingbetter.todolist.fragment.CompletedSimpleToDoItemsDisplayFragment;
@@ -40,7 +32,6 @@ import tek.first.livingbetter.todolist.model.Date;
 import tek.first.livingbetter.todolist.model.DetailedToDoItem;
 import tek.first.livingbetter.todolist.model.SimpleToDoItem;
 import tek.first.livingbetter.todolist.model.Time;
-import tek.first.livingbetter.wallet.WalletFragment;
 
 public class ToDoListDisplayActivity extends AppCompatActivity
         implements DetailedNewToDoItemDialogFragment.OnNewItemAddedListener,

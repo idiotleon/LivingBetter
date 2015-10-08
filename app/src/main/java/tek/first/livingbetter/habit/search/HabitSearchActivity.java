@@ -7,7 +7,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-public class SearchResultsActivity extends AppCompatActivity {
+public class HabitSearchActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = SearchManager.class.getSimpleName();
 
@@ -26,7 +26,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.v(LOG_TAG, "query, SearchResultsActivity: " + query);
+            Log.v(LOG_TAG, "query, HabitSearchActivity: " + query);
         }
     }
 }
