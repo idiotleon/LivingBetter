@@ -25,12 +25,12 @@ import tek.first.livingbetter.provider.LivingBetterContract;
 
 /**
  * Code sample for accessing the Yelp API V2.
- * <p>
+ * <p/>
  * This program demonstrates the capability of the Yelp API version 2.0 by using the Search API to
  * query for businesses by a search term and location, and the Business API to query additional
  * information about the top result from the search query.
- * <p>
- * <p>
+ * <p/>
+ * <p/>
  * See <a href="http://www.yelp.com/developers/documentation">Yelp Documentation</a> for more info.
  */
 public class Yelp {
@@ -46,6 +46,7 @@ public class Yelp {
     private Token accessToken;
 
     public static Yelp getYelp(Context context) {
+        Log.v(LOG_TAG, "getYelp(Context context) executed.");
         return new Yelp(context.getString(R.string.CONSUMER_KEY), context.getString(R.string.CONSUMER_SECRET),
                 context.getString(R.string.TOKEN), context.getString(R.string.TOKEN_SECRET));
     }
@@ -85,6 +86,7 @@ public class Yelp {
     }
 
     public ArrayList<InfoCollectedModel> processJson(Context context, String jsonString) throws JSONException {
+        Log.v(LOG_TAG, "processJson(Context context, String jsonString) executed.");
 
         final String LB_YELP_BUSINESS = "businesses";
         final String LB_YELP_REGION = "region";

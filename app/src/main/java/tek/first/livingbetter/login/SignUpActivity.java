@@ -13,18 +13,18 @@ import java.util.UUID;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.helper.DatabaseHelper;
-import tek.first.livingbetter.helper.UserContract;
+import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.provider.LivingBetterContract;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText username_editText;
-    private EditText password_editText;
-    private EditText password_com_editText;
-    private EditText age_editText;
-    private EditText street_editText;
-    private EditText city_editText;
-    private EditText country_editText;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
+    private EditText passwordComEditText;
+    private EditText ageEditText;
+    private EditText streetEditText;
+    private EditText cityEditText;
+    private EditText countryEditText;
 
     private DatabaseHelper helper;
 
@@ -33,16 +33,15 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        usernameEditText = (EditText) findViewById(R.id.username_editText_signUp);
+        passwordEditText = (EditText) findViewById(R.id.password_editText_signUp);
+        passwordComEditText = (EditText) findViewById(R.id.password_com_editText_signUp);
+        ageEditText = (EditText) findViewById(R.id.age_editText_signUp);
+        streetEditText = (EditText) findViewById(R.id.street_editText_signUp);
+        cityEditText = (EditText) findViewById(R.id.city_editText_signUp);
+        countryEditText = (EditText) findViewById(R.id.country_editText_signUp);
 
-        username_editText = (EditText) findViewById(R.id.username_editText_signUp);
-        password_editText = (EditText) findViewById(R.id.password_editText_signUp);
-        password_com_editText = (EditText) findViewById(R.id.password_com_editText_signUp);
-        age_editText = (EditText) findViewById(R.id.age_editText_signUp);
-        street_editText = (EditText) findViewById(R.id.street_editText_signUp);
-        city_editText = (EditText) findViewById(R.id.city_editText_signUp);
-        country_editText = (EditText) findViewById(R.id.country_editText_signUp);
-
-        helper = new DatabaseHelper( this );
+        helper = new DatabaseHelper(this);
     }
 
 
@@ -70,17 +69,17 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void signUp(View view) {
 
-        if( username_editText.getText().toString().trim().equals("")) {
+        if (usernameEditText.getText().toString().trim().equals("")) {
             Crouton.makeText(SignUpActivity.this, "Please input your username.", Style.ALERT).show();
             return;
         }
 
-        if( password_editText.getText().toString().trim().equals("") ){
+        if (passwordEditText.getText().toString().trim().equals("")) {
             Crouton.makeText(SignUpActivity.this, "Please input your password.", Style.ALERT).show();
             return;
         }
 
-        if( !password_editText.getText().toString().trim().equals(password_com_editText.getText().toString().trim())){
+        if (!passwordEditText.getText().toString().trim().equals(passwordComEditText.getText().toString().trim())) {
             Crouton.makeText(SignUpActivity.this, "Please input your password in the same way.", Style.ALERT).show();
             return;
         }
@@ -88,15 +87,15 @@ public class SignUpActivity extends AppCompatActivity {
         Crouton.makeText(this, "You have created your account successfully.", Style.CONFIRM).show();
 
         ContentValues values = new ContentValues();
-        values.put(UserContract.UserEntry.COLUMN_USER_ID, UUID.randomUUID().hashCode());
-        values.put(UserContract.UserEntry.COLUMN_USER_USERNAME, username_editText.getText().toString().trim());
-        values.put(UserContract.UserEntry.COLUMN_USER_AGE, age_editText.getText().toString().trim());
-        values.put(UserContract.UserEntry.COLUMN_USER_COUNTRY, country_editText.getText().toString().trim());
-        values.put(UserContract.UserEntry.COLUMN_USER_STREET, street_editText.getText().toString().trim());
-        values.put(UserContract.UserEntry.COLUMN_USER_CITY, city_editText.getText().toString().trim());
-        values.put(UserContract.UserEntry.COLUMN_USER_PASSWORD, password_editText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_ID, UUID.randomUUID().hashCode());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_USERNAME, usernameEditText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_AGE, ageEditText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_COUNTRY, countryEditText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_STREET, streetEditText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_CITY, cityEditText.getText().toString().trim());
+        values.put(LivingBetterContract.UserEntry.COLUMN_USER_PASSWORD, passwordEditText.getText().toString().trim());
 
-        helper.insertUser( values );
+        getContentResolver().insert(LivingBetterContract.UserEntry.CONTENT_URI, values);
 
         finish();
     }

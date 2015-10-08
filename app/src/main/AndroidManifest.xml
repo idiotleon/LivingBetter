@@ -28,21 +28,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".habit.DetailActivity" />
+        <activity android:name=".habit.HabitDetailActivity" />
 
-        <provider
-            android:name=".provider.LivingBetterContentProvider"
-            android:authorities="tek.first.livingbetter.LivingBetterProvider" />
+        <!-- ToDoList activities -->
+        <activity android:name=".todolist.activity.ToDoItemDetailsActivity" />
+        <activity android:name=".todolist.activity.ToDoListDisplayActivity" />
+        <activity android:name=".todolist.activity.ToDoListPreferenceActivity" />
 
+        <!-- Login activities-->
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.SignUpActivity" />
+
+        <!-- Search Activity -->
         <activity android:name=".habit.search.SearchResultsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
 
+        <!-- Setting Activity -->
         <activity
             android:name=".setting.SettingActivity"
             android:label="@string/title_activity_setting" />
+
+        <provider
+            android:name=".provider.LivingBetterContentProvider"
+            android:authorities="tek.first.livingbetter.LivingBetterProvider" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

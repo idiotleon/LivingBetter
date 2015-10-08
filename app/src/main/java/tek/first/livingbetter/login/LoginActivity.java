@@ -3,6 +3,7 @@ package tek.first.livingbetter.login;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,25 +19,25 @@ import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.HomeActivity;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.helper.DatabaseHelper;
+import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.provider.LivingBetterContract;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText username_editText;
-    private EditText password_editText;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
-    private DatabaseHelper helper;
-
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_activity);
 
-        username_editText = (EditText) findViewById(R.id.username_editText_main);
-        password_editText = (EditText) findViewById(R.id.password_editText_main);
+        usernameEditText = (EditText) findViewById(R.id.username_edittext_main);
+        passwordEditText = (EditText) findViewById(R.id.password_edittext_main);
 
-        helper = new DatabaseHelper(this);
+        dbHelper = new DatabaseHelper(this);
     }
 
 
@@ -64,25 +65,23 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(View view) {
 
-        if (username_editText.getText().toString().trim().equals("")) {
+        if (usernameEditText.getText().toString().trim().equals("")) {
             Crouton.makeText(LoginActivity.this, "Username is empty.", Style.ALERT).show();
             return;
         }
 
-        if (password_editText.getText().toString().trim().equals("")) {
+        if (passwordEditText.getText().toString().trim().equals("")) {
             Crouton.makeText(LoginActivity.this, "Password is empty.", Style.ALERT).show();
             return;
         }
 
-        int loginRes = helper.validateLogin(username_editText.getText().toString().trim(),
-                password_editText.getText().toString().trim());
-
+        int loginRes = validateLogin(usernameEditText.getText().toString().trim(),
+                passwordEditText.getText().toString().trim());
 
         // validate Internet
 
         if (!isOnline()) {
             Crouton.makeText(LoginActivity.this, "Network unavaliable", Style.ALERT).show();
-
         }
 
         if (!GPSavailiable()) {
@@ -90,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (loginRes == -1) {
-            Crouton.makeText(LoginActivity.this, "There is no such user named " + username_editText.getText().toString().trim(),
+            Crouton.makeText(LoginActivity.this, "There is no such user named " + usernameEditText.getText().toString().trim(),
                     Style.ALERT).show();
             return;
         }
@@ -150,6 +149,21 @@ public class LoginActivity extends AppCompatActivity {
             PendingIntent.getBroadcast(LoginActivity.this, 0, GPSIntent, 0).send();
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
+        }
+    }
+
+    private int validateLogin(String username, String password) {
+
+        Uri uri = Uri.parse(LivingBetterContract.UserEntry.CONTENT_URI + username);
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        if (cursor.getCount() == -1)
+            return -1;
+        else {
+            String passwordSaved = cursor.getString(cursor.getColumnIndex(LivingBetterContract.UserEntry.COLUMN_USER_PASSWORD));
+            if (password != passwordSaved)
+                return 0;
+            else
+                return 1;
         }
     }
 }

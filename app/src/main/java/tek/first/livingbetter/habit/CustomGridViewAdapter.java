@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.gridview_habit_detail, null);
+        View rowView = inflater.inflate(R.layout.habit_gridview_detail_activity, null);
 
         textViewName = (TextView) rowView.findViewById(R.id.detail_name_list);
         textViewDistance = (TextView) rowView.findViewById(R.id.detail_distance_list);
@@ -74,14 +73,12 @@ public class CustomGridViewAdapter extends BaseAdapter {
         }
         ratingBar.setRating(resultInfoCollection.get(position).getRating());
 
-        Gson gson = new Gson();
-        final String tests = gson.toJson(resultInfoCollection.get(position));
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailActivity.class);
+                Intent intent = new Intent(context, HabitDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("resultObject", tests);
+                bundle.putParcelable("resultObject", resultInfoCollection.get(position));
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

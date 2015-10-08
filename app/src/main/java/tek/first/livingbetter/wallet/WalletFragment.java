@@ -9,20 +9,18 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.helper.DatabaseHelper;
+import tek.first.livingbetter.provider.DatabaseHelper;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class WalletFragment extends Fragment {
-    private RadioGroup switch_rg_walletmain;
+    private RadioGroup switchRgWalletmain;
     private AnalysisFragment analysisFragment;
     private BudgetFragment budgetFragment;
     private HistoryFragment historyFragment;
     private FragmentTransaction transaction;
     private DatabaseHelper dataHelper;
-
-
 
     public WalletFragment() {
     }
@@ -30,11 +28,11 @@ public class WalletFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main_activity__wallet, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_activity_wallet, container, false);
 
-        switch_rg_walletmain = (RadioGroup) view.findViewById(R.id.switch_rg_walletmain);
+        switchRgWalletmain = (RadioGroup) view.findViewById(R.id.switch_rg_walletmain);
         dataHelper = new DatabaseHelper(getActivity());
-        init_data();
+        initData();
         if (null == budgetFragment) {
             budgetFragment = new BudgetFragment();
         }
@@ -43,7 +41,7 @@ public class WalletFragment extends Fragment {
         budgetFragment = new BudgetFragment();
         transaction.replace(R.id.fragment_container, budgetFragment);
         transaction.commit();
-        switch_rg_walletmain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        switchRgWalletmain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
@@ -85,7 +83,7 @@ public class WalletFragment extends Fragment {
         return view;
     }
 
-    public void init_data() {
+    public void initData() {
         transaction = getFragmentManager().beginTransaction();
         if (null == budgetFragment) {
             budgetFragment = new BudgetFragment();

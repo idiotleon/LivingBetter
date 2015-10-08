@@ -1,6 +1,5 @@
 package tek.first.livingbetter.wallet;
 
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,26 +18,26 @@ import java.util.ArrayList;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.helper.DatabaseHelper;
-
+import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.wallet.model.ItemModel;
 
 public class AnalysisFragment extends Fragment {
-    private Button btn_show;
-    private DatePicker dp_startDate_picker;
-    private DatePicker dp_endDate_picker;
+    private Button btnShow;
+    private DatePicker startDatePicker;
+    private DatePicker endDatePicker;
     private int status = -1;
     private RadioGroup radioGroup;
-    private DatabaseHelper helper;
+    private DatabaseHelper databaseHelper;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_analysis, container, false);
-        dp_endDate_picker = (DatePicker) view.findViewById(R.id.dp_endDate_picker);
-        dp_startDate_picker = (DatePicker) view.findViewById(R.id.dp_startDate_picker);
-        dp_endDate_picker.updateDate(2015, 0, 1);
-        dp_startDate_picker.updateDate(2015, 0, 1);
+        final View view = inflater.inflate(R.layout.wallet_fragment_analysis, container, false);
+        endDatePicker = (DatePicker) view.findViewById(R.id.dp_endDate_picker);
+        startDatePicker = (DatePicker) view.findViewById(R.id.dp_startDate_picker);
+        endDatePicker.updateDate(2015, 0, 1);
+        startDatePicker.updateDate(2015, 0, 1);
         radioGroup = (RadioGroup) view.findViewById(R.id.chart_rg_analysis);
-        helper = new DatabaseHelper(getActivity());
+        databaseHelper = new DatabaseHelper(getActivity());
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -53,30 +52,30 @@ public class AnalysisFragment extends Fragment {
             }
         });
 
-        btn_show = (Button) view.findViewById(R.id.btn_show);
-        btn_show.setOnClickListener(new View.OnClickListener() {
+        btnShow = (Button) view.findViewById(R.id.btn_show);
+        btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String str = "";
                 long startDateLong, endDateLong;
-                str += String.valueOf(dp_startDate_picker.getYear())
-                        + ((dp_startDate_picker.getMonth() + 1) < 10 ? "0" + String.valueOf((dp_startDate_picker.getMonth() + 1)) : String.valueOf((dp_startDate_picker.getMonth() + 1)))
-                        + (dp_startDate_picker.getDayOfMonth() < 10 ? "0" + String.valueOf(dp_startDate_picker.getDayOfMonth()) : String.valueOf(dp_startDate_picker.getDayOfMonth()))
+                str += String.valueOf(startDatePicker.getYear())
+                        + ((startDatePicker.getMonth() + 1) < 10 ? "0" + String.valueOf((startDatePicker.getMonth() + 1)) : String.valueOf((startDatePicker.getMonth() + 1)))
+                        + (startDatePicker.getDayOfMonth() < 10 ? "0" + String.valueOf(startDatePicker.getDayOfMonth()) : String.valueOf(startDatePicker.getDayOfMonth()))
                         + "000000";
                 startDateLong = Long.parseLong(str);
                 str = "";
-                str += String.valueOf(dp_endDate_picker.getYear())
-                        + ((dp_endDate_picker.getMonth() + 1) < 10 ? "0" + String.valueOf((dp_endDate_picker.getMonth() + 1)) : String.valueOf((dp_endDate_picker.getMonth() + 1)))
-                        + (dp_endDate_picker.getDayOfMonth() < 10 ? "0" + String.valueOf(dp_endDate_picker.getDayOfMonth()) : String.valueOf(dp_endDate_picker.getDayOfMonth()))
+                str += String.valueOf(endDatePicker.getYear())
+                        + ((endDatePicker.getMonth() + 1) < 10 ? "0" + String.valueOf((endDatePicker.getMonth() + 1)) : String.valueOf((endDatePicker.getMonth() + 1)))
+                        + (endDatePicker.getDayOfMonth() < 10 ? "0" + String.valueOf(endDatePicker.getDayOfMonth()) : String.valueOf(endDatePicker.getDayOfMonth()))
                         + "235959";
                 endDateLong = Long.parseLong(str);
                 if (endDateLong < startDateLong) {
                     Crouton.makeText(getActivity(), " Please select a ending date after the starting date", Style.ALERT).show();
                     return;
                 }
-                ArrayList<Item> res = helper.getItemfiltedDate(startDateLong, endDateLong);
-                for (Item item : res)
+                ArrayList<ItemModel> res = databaseHelper.getItemFilteredDate(startDateLong, endDateLong);
+                for (ItemModel item : res)
                     Log.e("date: ", item.getDate().toString());
                 if (status == 0) {
                     if (res.size() != 0) {

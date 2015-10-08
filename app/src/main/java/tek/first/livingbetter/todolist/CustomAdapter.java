@@ -1,3 +1,4 @@
+/*
 package tek.first.livingbetter.todolist;
 
 import android.content.Context;
@@ -12,9 +13,11 @@ import java.util.ArrayList;
 
 import tek.first.livingbetter.R;
 
+*/
 /**
  * Created by HAN KE on 2015/9/3.
- */
+ *//*
+
 public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
     private ArrayList<toDoItem> list;
     Context context;
@@ -122,3 +125,4 @@ public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
         return  sb.toString();
     }
 }
+*/

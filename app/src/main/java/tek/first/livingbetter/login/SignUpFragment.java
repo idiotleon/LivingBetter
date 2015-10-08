@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 
 import tek.first.livingbetter.R;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class SignUpFragment extends Fragment {
 
+public class SignUpFragment extends Fragment {
 
     public SignUpFragment() {
     }

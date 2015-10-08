@@ -11,12 +11,14 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import java.util.ArrayList;
 import java.util.List;
 
+import tek.first.livingbetter.wallet.model.ItemModel;
+
 /**
  * Created by Administrator on 2015/8/31.
  */
 public class MyDemoChart_BarChart extends AbstractDemoChart{
     private Context context;
-    public MyDemoChart_BarChart(Context context,ArrayList<Item> res) {
+    public MyDemoChart_BarChart(Context context,ArrayList<ItemModel> res) {
         super(context);
         this.context=context;
     }
@@ -28,7 +30,7 @@ public class MyDemoChart_BarChart extends AbstractDemoChart{
         return "The monthly sales for the last 2 years (horizontal bar chart)";
     }
 
-    public Intent execute(Context context,ArrayList<Item> res) {
+    public Intent execute(Context context,ArrayList<ItemModel> res) {
         String[] titles = new String[] { "2007", "2008" };
         List<double[]> values = new ArrayList<double[]>();
         values.add(new double[] { 5230, 7300, 9240, 10540, 7900, 9200, 12030, 11200, 9500, 10500,
