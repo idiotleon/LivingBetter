@@ -16,6 +16,7 @@
         android:icon="@mipmap/livingbetter"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <!-- Habit Activity -->
         <activity
             android:name="tek.first.livingbetter.habit.HabitDisplayActivity"
             android:label="@string/app_name">
@@ -29,13 +30,13 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/habit_searchable" />
         </activity>
-        <activity android:name=".habit.HabitDetailActivity" />
 
-        <!-- Habit Activity -->
+        <activity android:name=".habit.HabitDetailActivity" />
         <!-- Search Activity -->
         <activity android:name=".habit.search.HabitSearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data
                 android:name="android.app.searchable"

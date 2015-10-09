@@ -30,7 +30,7 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.wallet_fragment_history, container, false);
-        tabHost = (TabHost) view.findViewById(R.id.tabHost);
+        tabHost = (TabHost) view.findViewById(R.id.tabhost);
         tabHost.setup();
         dbHelper = new DatabaseHelper(getActivity());
         TabWidget tabWidget = tabHost.getTabWidget();

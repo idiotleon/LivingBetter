@@ -53,7 +53,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.habit_gridview_detail_activity, null);
+        View rowView = inflater.inflate(R.layout.habit_gridview_item_display, null);
 
         textViewName = (TextView) rowView.findViewById(R.id.detail_name_list);
         textViewDistance = (TextView) rowView.findViewById(R.id.detail_distance_list);

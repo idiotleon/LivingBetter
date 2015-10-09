@@ -54,5 +54,6 @@ public class GeneralConstants {
 
     public static final String TO_DO_ITEM_TITLE_IDENTIFIER = "title";
     public static final String TO_DO_ITEM_DESCRIPTION_IDENTIFIER = "description";
-
+    public static final String IDENTIFIER_KEYWORD = "identifier_keyword";
+    public static final String IDENTIFIER_CURRENT_ADDRESS = "identifier_current_address";
 }

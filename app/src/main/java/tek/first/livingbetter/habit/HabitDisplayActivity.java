@@ -1,9 +1,7 @@
 package tek.first.livingbetter.habit;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,8 +11,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,12 +19,9 @@ import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.support.v7.widget.SearchView;
 import android.widget.TabHost;
@@ -44,6 +37,9 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
+import tek.first.livingbetter.habit.search.HabitSearchActivity;
+import tek.first.livingbetter.todolist.helper.GeneralConstants;
+import tek.first.livingbetter.todolist.helper.GeneralHelper;
 
 public class HabitDisplayActivity extends AppCompatActivity {
 
@@ -61,13 +57,13 @@ public class HabitDisplayActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v(LOG_TAG, "onCreate(Bundle savedInstanceState) executed");
         setContentView(R.layout.habit_display_activity);
 
-        gridViewFood = (GridView) findViewById(R.id.gridView_food_result);
+        gridViewFood = (GridView) findViewById(R.id.gridview_food_result);
         gridViewEntertainment = (GridView) findViewById(R.id.gridview_entertainment_result);
         gridViewShopping = (GridView) findViewById(R.id.gridview_shopping_result);
-        final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+
+        final TabHost tabHost = (TabHost) findViewById(R.id.tabhost);
         tabHost.setup();
         TabWidget tabWidget = tabHost.getTabWidget();
 
@@ -96,7 +92,9 @@ public class HabitDisplayActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 currentAddress[0] = location.getLatitude();
+                Log.v(LOG_TAG, "currentAddress[0]: " + currentAddress[0]);
                 currentAddress[1] = location.getLongitude();
+                Log.v(LOG_TAG, "currentAddress[1]: " + currentAddress[1]);
                 // initData();
             }
 
@@ -112,7 +110,12 @@ public class HabitDisplayActivity extends AppCompatActivity {
             public void onProviderDisabled(String s) {
             }
         };
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        initInfo();
         handleIntent(getIntent());
     }
 
@@ -140,8 +143,15 @@ public class HabitDisplayActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         Log.v(LOG_TAG, "handleIntent(Intent intent) executed.");
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String keyWord = intent.getStringExtra(SearchManager.QUERY);
-            Log.v(LOG_TAG, "keyword: " + keyWord);
+            String keyword = intent.getStringExtra(SearchManager.QUERY);
+            Log.v(LOG_TAG, "keyword, handleIntent(Intent intent): " + keyword);
+            Intent searchActivityIntent = new Intent(HabitDisplayActivity.this, HabitSearchActivity.class);
+            searchActivityIntent.putExtra(GeneralConstants.IDENTIFIER_KEYWORD, keyword);
+            searchActivityIntent.putExtra(GeneralConstants.IDENTIFIER_CURRENT_ADDRESS, currentAddress);
+            Log.v(LOG_TAG, "currentAddress[0], handleIntent(Intent intent): " + currentAddress[0]);
+            Log.v(LOG_TAG, "currentAddress[1], handleIntent(Intent intent): " + currentAddress[1]);
+            searchActivityIntent.setAction(Intent.ACTION_SEARCH);
+            startActivity(searchActivityIntent);
         }
     }
 
@@ -161,20 +171,17 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
     private void initGPS() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager
-                .isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             refersh = true;
             AlertDialog.Builder dialog = new AlertDialog.Builder(HabitDisplayActivity.this);
             dialog.setMessage("Please open GPS to locate your position");
-            dialog.setPositiveButton("OK",
-                    new android.content.DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            Intent intent = new Intent(
-                                    Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivityForResult(intent, 0);
-                        }
-                    });
+            dialog.setPositiveButton("OK", new android.content.DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(intent, 0);
+                }
+            });
             dialog.setNeutralButton("cancel", new android.content.DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
@@ -217,19 +224,14 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
     private void initInfo() {
         Log.v(LOG_TAG, "initInfo() executed.");
-        if (!isOnline()) {
-            Crouton.makeText(HabitDisplayActivity.this, "Network Error", Style.ALERT).show();
+        if (!GeneralHelper.isNetworkAvailable(HabitDisplayActivity.this)) {
+            Crouton.makeText(HabitDisplayActivity.this,
+                    getResources().getString(R.string.network_not_available),
+                    Style.ALERT).show();
         } else {
             initGPS();
-            updateLocation();
             initData();
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        initInfo();
     }
 
     public void initData() {
@@ -245,9 +247,9 @@ public class HabitDisplayActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HabitDisplayActivity.this);
                         Log.v(LOG_TAG, sharedPreferences.getString("shop", "shopping"));
 
-                        String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], "20");
-                        String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], "20");
-                        String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], "20");
+                        String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
+                        String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
+                        String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
 
 //                        Log.v(LOG_TAG, "json res:" + shoppingJson);
                         // todo: 1. Get familiar with Yelp Web API; 2. More interactions with "category" (such as: preferences for input from users); 3. how to display info on
@@ -270,24 +272,5 @@ public class HabitDisplayActivity extends AppCompatActivity {
                 gridViewShopping.setAdapter(new CustomGridViewAdapter(HabitDisplayActivity.this, shoppingArrayList));
             }
         }.execute();
-    }
-
-    public boolean isOnline() {
-        boolean status = false;
-        try {
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getNetworkInfo(0);
-            if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED) {
-                status = true;
-            } else {
-                netInfo = cm.getNetworkInfo(1);
-                if (netInfo != null && netInfo.getState() == NetworkInfo.State.CONNECTED)
-                    status = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return status;
     }
 }

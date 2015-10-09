@@ -136,5 +136,7 @@
     <string name="Shopping_tv_fragment_budget">Shopping: </string>
 
     <string name="about">This application entertains you.</string>
+    <string name="network_not_available">Network is not available.</string>
+    <string name="empty_text_view">Nothing to display.</string>
 
 </resources>

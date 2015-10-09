@@ -37,6 +37,8 @@ public class Yelp {
 
     private static final String LOG_TAG = Yelp.class.getSimpleName();
 
+    public static final String YELP_SEARCH_LIMIT = "20";
+
   /*
    * Update OAuth credentials below from the Yelp Developers API site:
    * http://www.yelp.com/developers/getting_started/api_access
@@ -57,13 +59,18 @@ public class Yelp {
     }
 
     public String search(String term, double latitude, double longitude, String limit) {
-        OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
-        request.addQuerystringParameter("term", term);
-        request.addQuerystringParameter("ll", latitude + "," + longitude);
-        request.addQuerystringParameter("limit", limit);
-        this.service.signRequest(this.accessToken, request);
-        Response response = request.send();
-        return response.getBody();
+        if (term != null && term.length() > 0) {
+            OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
+            request.addQuerystringParameter("term", term);
+            request.addQuerystringParameter("ll", latitude + "," + longitude);
+            request.addQuerystringParameter("limit", limit);
+            this.service.signRequest(this.accessToken, request);
+            Response response = request.send();
+            return response.getBody();
+        } else {
+            Log.e(LOG_TAG, "term is null");
+            return null;
+        }
     }
 
     public String search(String term, String location, String limit) {
@@ -179,14 +186,14 @@ public class Yelp {
 
     private static String handleAddress(String displayAddress) {
         String[] s = displayAddress.split("\"");
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < s.length; i++) {
             if (s[i].length() > 1) {
-                sb.append(s[i]);
-                sb.append("\n");
+                stringBuilder.append(s[i]);
+                stringBuilder.append("\n");
             }
         }
-        String result = sb.toString().substring(0, sb.length() - 1);
+        String result = stringBuilder.toString().substring(0, stringBuilder.length() - 1);
         Log.v(LOG_TAG, "result, handleAddress(String displayAddress): " + result);
         return result;
     }
@@ -194,7 +201,7 @@ public class Yelp {
     private static String handleCategory(String category) {
 
         String res[] = category.split("\"|,");
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < res.length; i++) {
             if (res[i].length() > 2) {
@@ -202,10 +209,10 @@ public class Yelp {
             }
         }
         for (int i = 0; i < list.size(); i += 2) {
-            sb.append(list.get(i));
-            sb.append(",");
+            stringBuilder.append(list.get(i));
+            stringBuilder.append(",");
         }
-        String result = sb.toString().substring(0, sb.length() - 1);
+        String result = stringBuilder.toString().substring(0, stringBuilder.length() - 1);
         Log.v(LOG_TAG, "result, handleCategory(String category): " + result);
         return result;
     }
