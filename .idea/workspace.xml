@@ -39,56 +39,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HabitDisplayActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/HabitDisplayActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="148" column="84" selection-start-line="148" selection-start-column="84" selection-end-line="148" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#3431:3755" expanded="false" />
-                <element signature="class#3790:4515" expanded="false" />
-                <element signature="method#onLocationChanged#0;class#3790:4515" expanded="false" />
-                <element signature="method#onStart#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="method#onNewIntent#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="method#initGPS#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="e#7286#7614#0" expanded="true" />
-                <element signature="e#7613#7614#0" expanded="true" />
-                <element signature="e#7663#7882#0" expanded="true" />
-                <element signature="e#7881#7882#0" expanded="true" />
-                <element signature="method#updateLocation#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="method#initInfo#0;class#HabitDisplayActivity#0" expanded="false" />
-                <element signature="e#10215#10271#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="habit_display_activity.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/habit_display_activity.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.793103">
-              <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HabitSearchActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/search/HabitSearchActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65763193">
-              <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
-              <folding>
-                <element signature="e#1861#1862#0" expanded="true" />
-                <element signature="e#1897#1898#0" expanded="true" />
-                <element signature="e#3940#3996#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-0.7833828">
+              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2913,13 +2869,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.4992867">
           <caret line="340" column="0" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
-          <folding>
-            <element signature="method#onOptionsItemSelected#0;class#ToDoListDisplayActivity#0" expanded="false" />
-            <element signature="e#8801#8870#0" expanded="false" />
-            <element signature="e#8937#11410#0" expanded="false" />
-            <element signature="e#11409#11410#0" expanded="false" />
-            <element signature="method#onSaveInstanceState#0;class#ToDoListDisplayActivity#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2928,20 +2878,7 @@
         <state vertical-scroll-proportion="0.23965763">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#restoreActionBar#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#HomeActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#HomeActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/habit_searchable.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding>
-            <element signature="e#127#148#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2951,8 +2888,7 @@
         <state vertical-scroll-proportion="0.17518248">
           <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
           <folding>
-            <element signature="e#235#259#0" expanded="true" />
-            <element signature="e#409#432#0" expanded="true" />
+            <element signature="e#235#259#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2977,20 +2913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.4721826">
           <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
-          <folding>
-            <element signature="e#1116#1134#0" expanded="true" />
-            <element signature="e#2962#2990#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/habit_gridview_item_display.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4642857">
-          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -3011,32 +2933,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/habit_display_activity.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.793103">
-          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/CustomGridViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.23252496">
           <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/habit_user_search_result.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.071428575">
-          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -3049,40 +2949,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/HabitDisplayActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="84" selection-start-line="148" selection-start-column="84" selection-end-line="148" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#3431:3755" expanded="false" />
-            <element signature="class#3790:4515" expanded="false" />
-            <element signature="method#onLocationChanged#0;class#3790:4515" expanded="false" />
-            <element signature="method#onStart#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="method#onNewIntent#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="method#initGPS#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="e#7286#7614#0" expanded="true" />
-            <element signature="e#7613#7614#0" expanded="true" />
-            <element signature="e#7663#7882#0" expanded="true" />
-            <element signature="e#7881#7882#0" expanded="true" />
-            <element signature="method#updateLocation#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="method#initInfo#0;class#HabitDisplayActivity#0" expanded="false" />
-            <element signature="e#10215#10271#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/tek/first/livingbetter/habit/search/HabitSearchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65763193">
-          <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
-          <folding>
-            <element signature="e#1861#1862#0" expanded="true" />
-            <element signature="e#1897#1898#0" expanded="true" />
-            <element signature="e#3940#3996#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-0.7833828">
+          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
