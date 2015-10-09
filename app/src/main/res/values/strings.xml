@@ -139,4 +139,6 @@
     <string name="network_not_available">Network is not available.</string>
     <string name="empty_text_view">Nothing to display.</string>
 
+    <string name="action_sort">Sort</string>
+
 </resources>
