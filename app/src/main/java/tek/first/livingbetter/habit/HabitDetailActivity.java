@@ -12,6 +12,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.support.v7.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +48,7 @@ import java.net.URL;
 import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
 import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.setting.SettingActivity;
 import tek.first.livingbetter.todolist.fragment.dialog.DetailedNewToDoItemDialogFragment;
 import tek.first.livingbetter.todolist.fragment.dialog.DetailedNewToDoItemDialogFragment.OnNewItemAddedListener;
 import tek.first.livingbetter.todolist.helper.GeneralConstants;
@@ -64,6 +69,8 @@ public class HabitDetailActivity extends AppCompatActivity implements OnNewItemA
     private InfoCollectedModel infoCollected;
     private LocationListener locationListener;
     private double latitudeDetail, longitudeDetail;
+
+    private ShareActionProvider shareActionProvider;
 
     private DatabaseHelper dbHelper;
 
@@ -171,23 +178,39 @@ public class HabitDetailActivity extends AppCompatActivity implements OnNewItemA
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_show_detail, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.habit_detail_activity, menu);
+
+        MenuItem shareMenuItem = menu.findItem(R.id.action_share);
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareMenuItem);
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, infoCollected.getName());
+        String contactInfo = infoCollected.getName() + "\n" +
+                "Phone: " + infoCollected.getPhoneNumber() + "\n" +
+                "Address: " + infoCollected.getAddress() + "\n" +
+                "Website URL: " + infoCollected.getMobileUrl() + "\n";
+        shareIntent.putExtra(Intent.EXTRA_TEXT, contactInfo);
+
+        shareActionProvider.setShareIntent(shareIntent);
+//        shareActionProvider.setShareHistoryFileName("custom_share_history.xml");
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent settingIntent = new Intent(HabitDetailActivity.this, SettingActivity.class);
+                startActivity(settingIntent);
+                return true;
+            default:
+                return false;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

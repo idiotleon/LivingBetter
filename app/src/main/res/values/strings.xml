@@ -72,7 +72,7 @@
     <string name="sort_menu_radiobutton_displaycompleteditems">Display Completed Items</string>
 
     <!-- Menu in ToDoItemDetailsActivity-->
-    <string name="todolist_share">Share</string>
+    <string name="title_text_share">Share</string>
 
     <string-array name="priority_level">
         <item>1</item>
@@ -144,5 +144,7 @@
     <string name="preference_latitude">preference_latitude</string>
     <string name="preference_longitude">preference_longitude</string>
     <string name="preference_file_key">preference_file_key</string>
+
+    <string name="share_title_text">How do you want to share?</string>
 
 </resources>
