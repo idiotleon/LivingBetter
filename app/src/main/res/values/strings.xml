@@ -26,7 +26,7 @@
     <string name="TOKEN">vEwdxU5M6LFII1hgmtmIeBUU7Q7nweXE</string>
     <string name="TOKEN_SECRET">xgdmJdIRqMA-c3y2m5GmxsYyMNk</string>
     <string name="action_refresh">Refresh</string>
-    <string name="action_search">Search</string>
+    <string name="action_search_title">Search</string>
     <string name="search_hint">Anything interested in?</string>
     <string name="title_activity_maps">Map</string>
 
@@ -140,5 +140,9 @@
     <string name="empty_text_view">Nothing to display.</string>
 
     <string name="action_sort">Sort</string>
+
+    <string name="preference_latitude">preference_latitude</string>
+    <string name="preference_longitude">preference_longitude</string>
+    <string name="preference_file_key">preference_file_key</string>
 
 </resources>

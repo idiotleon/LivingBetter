@@ -45,13 +45,17 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = HabitDisplayActivity.class.getSimpleName();
 
+    public static final String CUSTOM_INTENT_FILTER = "tek.first.livingbetter.HabitDisplayActivity.CustomIntentFilter";
+
     private GridView gridViewFood, gridViewEntertainment, gridViewShopping;
     private ArrayList<InfoCollectedModel> foodArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> entertainmentArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> shoppingArrayList = new ArrayList<>();
-    private double[] currentAddress = new double[2];
+    //    private double[] currentAddress = new double[2];
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private double latitude;
+    private double longitude;
     private boolean refersh;
 
     @Override
@@ -70,6 +74,7 @@ public class HabitDisplayActivity extends AppCompatActivity {
         tabHost.addTab(tabHost.newTabSpec("tab1").setContent(R.id.tab1).setIndicator("Food", null));
         tabHost.addTab(tabHost.newTabSpec("tab2").setContent(R.id.tab2).setIndicator("Entertainment", null));
         tabHost.addTab(tabHost.newTabSpec("tab3").setContent(R.id.tab3).setIndicator("Shopping", null));
+
         TextView tv1 = (TextView) tabWidget.getChildAt(0).findViewById(android.R.id.title);
         tv1.setTextSize(10);
         TextView tv2 = (TextView) tabWidget.getChildAt(1).findViewById(android.R.id.title);
@@ -91,11 +96,19 @@ public class HabitDisplayActivity extends AppCompatActivity {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                currentAddress[0] = location.getLatitude();
-                Log.v(LOG_TAG, "currentAddress[0]: " + currentAddress[0]);
-                currentAddress[1] = location.getLongitude();
-                Log.v(LOG_TAG, "currentAddress[1]: " + currentAddress[1]);
-                // initData();
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
+                latitude = location.getLatitude();
+                Log.v(LOG_TAG, "latitude: " + latitude);
+                preferenceEditor.putLong(getString(R.string.preference_latitude), Double.doubleToRawLongBits(latitude));
+//                Log.v(LOG_TAG, "latitude, from Preference: " + Double.longBitsToDouble(sharedPreferences.getLong(getResources().getString(R.string.preference_latitude), 0)));
+                Log.v(LOG_TAG, "latitude, from Preference: " + Double.longBitsToDouble(sharedPreferences.getLong(getResources().getString(R.string.preference_latitude), 0)));
+                longitude = location.getLongitude();
+                Log.v(LOG_TAG, "longitude: " + longitude);
+//                preferenceEditor.putLong(getResources().getString(R.string.preference_longitude), Double.doubleToRawLongBits(longitude));
+                preferenceEditor.putLong(getString(R.string.preference_longitude), Double.doubleToLongBits(longitude));
+                preferenceEditor.commit();
+
             }
 
             @Override
@@ -121,12 +134,12 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.habit_menu_display_fragment, menu);
+        getMenuInflater().inflate(R.menu.habit_display_activity, menu);
 
         // Associate habit_searchable configuration with the SearchView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+            SearchView searchView = (SearchView) menu.findItem(R.id.action_search_habit_display_activity).getActionView();
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
             searchView.setIconifiedByDefault(false);
         }
@@ -147,10 +160,7 @@ public class HabitDisplayActivity extends AppCompatActivity {
             Log.v(LOG_TAG, "keyword, handleIntent(Intent intent): " + keyword);
             Intent searchActivityIntent = new Intent(HabitDisplayActivity.this, HabitSearchActivity.class);
             searchActivityIntent.putExtra(GeneralConstants.IDENTIFIER_KEYWORD, keyword);
-            searchActivityIntent.putExtra(GeneralConstants.IDENTIFIER_CURRENT_ADDRESS, currentAddress);
-            Log.v(LOG_TAG, "currentAddress[0], handleIntent(Intent intent): " + currentAddress[0]);
-            Log.v(LOG_TAG, "currentAddress[1], handleIntent(Intent intent): " + currentAddress[1]);
-            searchActivityIntent.setAction(Intent.ACTION_SEARCH);
+            searchActivityIntent.setAction(CUSTOM_INTENT_FILTER);
             startActivity(searchActivityIntent);
         }
     }
@@ -161,7 +171,7 @@ public class HabitDisplayActivity extends AppCompatActivity {
             case R.id.action_refresh:
                 initInfo();
                 return true;
-            case R.id.action_search:
+            case R.id.action_search_habit_display_activity:
                 onSearchRequested();
                 return true;
             default:
@@ -211,14 +221,22 @@ public class HabitDisplayActivity extends AppCompatActivity {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, locationListener);
             if (locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) != null) {
-                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
-                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+                latitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude();
+                longitude = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude();
+/*                SharedPreferences sharedPreferences = HabitDisplayActivity.this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
+                preferenceEditor.putLong(getResources().getString(R.string.preference_latitude), Double.doubleToRawLongBits(latitude));
+                preferenceEditor.putLong(getResources().getString(R.string.preference_longitude), Double.doubleToRawLongBits(longitude));*/
             } else if (locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) != null) {
-                currentAddress[0] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
-                currentAddress[1] = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
+                latitude = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
+                longitude = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
+/*                SharedPreferences sharedPreferences = HabitDisplayActivity.this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
+                preferenceEditor.putLong(getResources().getString(R.string.preference_latitude), Double.doubleToRawLongBits(latitude));
+                preferenceEditor.putLong(getResources().getString(R.string.preference_longitude), Double.doubleToRawLongBits(longitude));*/
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -230,6 +248,7 @@ public class HabitDisplayActivity extends AppCompatActivity {
                     Style.ALERT).show();
         } else {
             initGPS();
+            updateLocation();
             initData();
         }
     }
@@ -239,28 +258,24 @@ public class HabitDisplayActivity extends AppCompatActivity {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                if (currentAddress[0] == 0) {
-                    Log.e(LOG_TAG, "currentAddress[0] == 0");
-                } else {
-                    Yelp yelp = Yelp.getYelp(HabitDisplayActivity.this);
-                    try {
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HabitDisplayActivity.this);
-                        Log.v(LOG_TAG, sharedPreferences.getString("shop", "shopping"));
+                Yelp yelp = Yelp.getYelp(HabitDisplayActivity.this);
+                try {
+                    SharedPreferences sharedPreferences = HabitDisplayActivity.this.getPreferences(Context.MODE_PRIVATE);
+                    Log.v(LOG_TAG, sharedPreferences.getString("shop", "shopping"));
 
-                        String foodJson = yelp.search(sharedPreferences.getString("food", "food"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
-                        String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
-                        String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), currentAddress[0], currentAddress[1], Yelp.YELP_SEARCH_LIMIT);
+                    String foodJson = yelp.search(sharedPreferences.getString("food", "food"), latitude, longitude, Yelp.YELP_SEARCH_LIMIT);
+                    String entertainmentJson = yelp.search(sharedPreferences.getString("entertainment", "entertainment"), latitude, longitude, Yelp.YELP_SEARCH_LIMIT);
+                    String shoppingJson = yelp.search(sharedPreferences.getString("shop", "shopping"), latitude, longitude, Yelp.YELP_SEARCH_LIMIT);
 
-//                        Log.v(LOG_TAG, "json res:" + shoppingJson);
-                        // todo: 1. Get familiar with Yelp Web API; 2. More interactions with "category" (such as: preferences for input from users); 3. how to display info on
-                        foodArrayList = yelp.processJson(HabitDisplayActivity.this, foodJson);
-                        entertainmentArrayList = yelp.processJson(HabitDisplayActivity.this, entertainmentJson);
-                        shoppingArrayList = yelp.processJson(HabitDisplayActivity.this, shoppingJson);
+                    Log.v(LOG_TAG, "json res:" + shoppingJson);
+                    // todo: 1. Get familiar with Yelp Web API; 2. More interactions with "category" (such as: preferences for input from users); 3. how to display info on
+                    foodArrayList = yelp.processJson(HabitDisplayActivity.this, foodJson);
+                    entertainmentArrayList = yelp.processJson(HabitDisplayActivity.this, entertainmentJson);
+                    shoppingArrayList = yelp.processJson(HabitDisplayActivity.this, shoppingJson);
 
 //                        Log.v(LOG_TAG, "res size: " + String.valueOf(shoppingArrayList.size()));
-                    } catch (JSONException ex) {
-                        ex.printStackTrace();
-                    }
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
                 }
                 return null;
             }

@@ -64,6 +64,7 @@ public class Yelp {
             request.addQuerystringParameter("term", term);
             request.addQuerystringParameter("ll", latitude + "," + longitude);
             request.addQuerystringParameter("limit", limit);
+            Log.v(LOG_TAG, "request: " + request.toString());
             this.service.signRequest(this.accessToken, request);
             Response response = request.send();
             return response.getBody();

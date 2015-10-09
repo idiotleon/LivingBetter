@@ -8,9 +8,9 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/action_search_habit_display_activity"
         android:icon="@drawable/search"
-        android:title="@string/action_search"
+        android:title="@string/action_search_title"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
 
