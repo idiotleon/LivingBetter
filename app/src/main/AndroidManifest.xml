@@ -36,6 +36,8 @@
         <activity android:name=".habit.search.HabitSearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+                <action android:name="tek.first.livingbetter.HabitDisplayActivity.CustomIntentFilter" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data

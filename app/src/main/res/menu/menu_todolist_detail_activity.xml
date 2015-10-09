@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_share"
         android:actionProviderClass="android.widget.ShareActionProvider"
-        android:title="@string/todolist_share"
+        android:title="@string/title_text_share"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_for_test_purpose"
