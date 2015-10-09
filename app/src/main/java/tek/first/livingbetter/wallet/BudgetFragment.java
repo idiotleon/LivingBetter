@@ -12,105 +12,101 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.Date;
 
 import tek.first.livingbetter.R;
-import tek.first.livingbetter.helper.DatabaseHelper;
-
+import tek.first.livingbetter.provider.DatabaseHelper;
 
 public class BudgetFragment extends Fragment {
-    private EditText entertainment_et_fragment_budget;
-    private EditText food_et_fragment_budget;
-    private EditText shopping_et_fragment_budget;
-    private TextView totalnumber_tv_fragment_budget;
-    private int value_entertainment;
-    private int value_food;
-    private int value_shopping;
-    private int value_total;
-    private Button save_btn_budget;
-    private TextView activity_tv_fragment_budget;
-    private EditText activity_et_fragment_budget;
-    private Button edit_btn_budget;
+    private EditText entertainmentEtFragmentBudget;
+    private EditText foodEtFragmentBudget;
+    private EditText shoppingEtFragmentBudget;
+    private int valueEntertainment;
+    private int valueFood;
+    private int valueShopping;
+    private int valueTotal;
+    private Button saveBtnBudget;
+    private Button editBtnBudget;
     private MyProgressBar progressBar;
     private DatabaseHelper dataHelper;
-    float total;
-    Date date;
-    int year;
-    int month;
-    float current;
-    String total_budget;
-
+    private float total;
+    private Date date;
+    private int year;
+    private int month;
+    private float current;
+    private String totalBudget;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_budget, container, false);
+        View view = inflater.inflate(R.layout.wallet_fragment_budget, container, false);
 
-        shopping_et_fragment_budget = (EditText) view.findViewById(R.id.shopping_et_fragment_budget);
-        entertainment_et_fragment_budget = (EditText) view.findViewById(R.id.entertainment_et_fragment_budget);
-        food_et_fragment_budget = (EditText) view.findViewById(R.id.food_et_fragment_budget);
-        progressBar = (MyProgressBar) view.findViewById(R.id.budget_pb);
+        shoppingEtFragmentBudget = (EditText) view.findViewById(R.id.wallet_shopping_et_fragment_budget);
+        entertainmentEtFragmentBudget = (EditText) view.findViewById(R.id.wallet_entertainment_et_fragment_budget);
+        foodEtFragmentBudget = (EditText) view.findViewById(R.id.wallet_food_et_fragment_budget);
+        progressBar = (MyProgressBar) view.findViewById(R.id.wallet_budget_pb);
         dataHelper = new DatabaseHelper(getActivity());
 
-        save_btn_budget = (Button) view.findViewById(R.id.save_btn_budget);
-        edit_btn_budget = (Button) view.findViewById(R.id.edit_btn_budget);
+        saveBtnBudget = (Button) view.findViewById(R.id.wallet_save_btn_budget);
+        editBtnBudget = (Button) view.findViewById(R.id.wallet_edit_btn_budget);
 
         loadSavedPreferences();
         initialProgressBar();
 
-        edit_btn_budget.setOnClickListener(new View.OnClickListener() {
+        editBtnBudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 unlock();
-                save_btn_budget.setVisibility(View.VISIBLE);
-                edit_btn_budget.setVisibility(View.GONE);
+                saveBtnBudget.setVisibility(View.VISIBLE);
+                editBtnBudget.setVisibility(View.GONE);
                 return;
             }
         });
 
-        if (shopping_et_fragment_budget.getText().toString().trim().equals("") && entertainment_et_fragment_budget.getText().toString().trim().equals("") && food_et_fragment_budget.getText().toString().trim().equals("")) {
+        if (shoppingEtFragmentBudget.getText().toString().trim().equals("")
+                && entertainmentEtFragmentBudget.getText().toString().trim().equals("")
+                && foodEtFragmentBudget.getText().toString().trim().equals("")) {
             unlock();
-            edit_btn_budget.setVisibility(View.GONE);
-            save_btn_budget.setVisibility(View.VISIBLE);
+            editBtnBudget.setVisibility(View.GONE);
+            saveBtnBudget.setVisibility(View.VISIBLE);
         } else {
             lock();
         }
 
-        save_btn_budget.setOnClickListener(new View.OnClickListener() {
+        saveBtnBudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    if (entertainment_et_fragment_budget.getText().toString().trim().equals(""))
-                        value_entertainment = 0;
+                    if (entertainmentEtFragmentBudget.getText().toString().trim().equals(""))
+                        valueEntertainment = 0;
                     else
-                        value_entertainment = Integer.parseInt(entertainment_et_fragment_budget.getText().toString());
-                    if (food_et_fragment_budget.getText().toString().trim().equals(""))
-                        value_food = 0;
+                        valueEntertainment = Integer.parseInt(entertainmentEtFragmentBudget.getText().toString());
+                    if (foodEtFragmentBudget.getText().toString().trim().equals(""))
+                        valueFood = 0;
                     else
-                        value_food = Integer.parseInt(food_et_fragment_budget.getText().toString());
-                    if (shopping_et_fragment_budget.getText().toString().trim().equals(""))
-                        value_shopping = 0;
+                        valueFood = Integer.parseInt(foodEtFragmentBudget.getText().toString());
+                    if (shoppingEtFragmentBudget.getText().toString().trim().equals(""))
+                        valueShopping = 0;
                     else
-                        value_shopping = Integer.parseInt(shopping_et_fragment_budget.getText().toString());
+                        valueShopping = Integer.parseInt(shoppingEtFragmentBudget.getText().toString());
                 } catch (NumberFormatException nfe) {
                     nfe.printStackTrace();
                 }
-                value_total = value_entertainment + value_food + value_shopping;
-                total_budget = String.valueOf(value_total);
+                valueTotal = valueEntertainment + valueFood + valueShopping;
+                totalBudget = String.valueOf(valueTotal);
 
-                savePreferences("storeShopping", shopping_et_fragment_budget.getText().toString());
-                savePreferences("storeEntertainment", entertainment_et_fragment_budget.getText().toString());
-                savePreferences("storeFood", food_et_fragment_budget.getText().toString());
-                savePreferences("storeTotal", total_budget);
-                savePreferences("saveBudget", save_btn_budget.getVisibility());
-                savePreferences("editBudget", edit_btn_budget.getVisibility());
+                savePreferences("storeShopping", shoppingEtFragmentBudget.getText().toString());
+                savePreferences("storeEntertainment", entertainmentEtFragmentBudget.getText().toString());
+                savePreferences("storeFood", foodEtFragmentBudget.getText().toString());
+                savePreferences("storeTotal", totalBudget);
+                savePreferences("saveBudget", saveBtnBudget.getVisibility());
+                savePreferences("editBudget", editBtnBudget.getVisibility());
 
                 lock();
-                total = value_total;
+                total = valueTotal;
                 int process = (int) ((current / total) * 100);
                 if (process > 70 && process < 100) {
                     progressBar.warningText(Color.YELLOW);
@@ -121,8 +117,8 @@ public class BudgetFragment extends Fragment {
                 }
                 progressBar.setProgress(process, current, total);
 
-                edit_btn_budget.setVisibility(View.VISIBLE);
-                save_btn_budget.setVisibility(View.GONE);
+                editBtnBudget.setVisibility(View.VISIBLE);
+                saveBtnBudget.setVisibility(View.GONE);
                 Fragment fragment;
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -135,19 +131,18 @@ public class BudgetFragment extends Fragment {
         return view;
     }
 
-
     private void loadSavedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String name_shopping = sharedPreferences.getString("storeShopping", "");
-        String name_entertainment = sharedPreferences.getString("storeEntertainment", "");
-        String name_food = sharedPreferences.getString("storeFood", "");
-        String name_total = sharedPreferences.getString("storeTotal", "");
-        shopping_et_fragment_budget.setText(name_shopping);
-        entertainment_et_fragment_budget.setText(name_entertainment);
-        food_et_fragment_budget.setText(name_food);
+        String nameShopping = sharedPreferences.getString("storeShopping", "");
+        String nameEntertainment = sharedPreferences.getString("storeEntertainment", "");
+        String nameFood = sharedPreferences.getString("storeFood", "");
+        String nameTotal = sharedPreferences.getString("storeTotal", "");
+        shoppingEtFragmentBudget.setText(nameShopping);
+        entertainmentEtFragmentBudget.setText(nameEntertainment);
+        foodEtFragmentBudget.setText(nameFood);
 
-        save_btn_budget.setVisibility(View.GONE);
-        edit_btn_budget.setVisibility(View.VISIBLE);
+        saveBtnBudget.setVisibility(View.GONE);
+        editBtnBudget.setVisibility(View.VISIBLE);
     }
 
     private void savePreferences(String key, String value) {
@@ -165,19 +160,19 @@ public class BudgetFragment extends Fragment {
     }
 
     private void unlock() {
-        food_et_fragment_budget.setFocusableInTouchMode(true);
-        entertainment_et_fragment_budget.setFocusableInTouchMode(true);
-        shopping_et_fragment_budget.setFocusableInTouchMode(true);
+        foodEtFragmentBudget.setFocusableInTouchMode(true);
+        entertainmentEtFragmentBudget.setFocusableInTouchMode(true);
+        shoppingEtFragmentBudget.setFocusableInTouchMode(true);
 
     }
 
     public void lock() {
-        food_et_fragment_budget.setFocusableInTouchMode(false);
-        entertainment_et_fragment_budget.setFocusableInTouchMode(false);
-        shopping_et_fragment_budget.setFocusableInTouchMode(false);
-        food_et_fragment_budget.clearFocus();
-        entertainment_et_fragment_budget.clearFocus();
-        shopping_et_fragment_budget.clearFocus();
+        foodEtFragmentBudget.setFocusableInTouchMode(false);
+        entertainmentEtFragmentBudget.setFocusableInTouchMode(false);
+        shoppingEtFragmentBudget.setFocusableInTouchMode(false);
+        foodEtFragmentBudget.clearFocus();
+        entertainmentEtFragmentBudget.clearFocus();
+        shoppingEtFragmentBudget.clearFocus();
     }
 
     public void initialProgressBar() {
@@ -201,6 +196,4 @@ public class BudgetFragment extends Fragment {
         }
         progressBar.setProgress(process, current, total);
     }
-
-
 }

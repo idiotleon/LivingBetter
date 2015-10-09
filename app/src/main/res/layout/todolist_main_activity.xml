@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_todolist_main_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/todolist_newitem"
+        android:name="tek.first.livingbetter.todolist.fragment.NewItemAddedFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <fragment
+        android:id="@+id/todolist_displayfragment_incomplete_items"
+        android:name="tek.first.livingbetter.todolist.fragment.IncompleteDetailedItemsDisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todolist_newitem" />
+
+    <fragment
+        android:id="@+id/todolist_displayfragment_simple_todoitems"
+        android:name="tek.first.livingbetter.todolist.fragment.IncompleteSimpleToDoItemsDisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todolist_displayfragment_incomplete_items" />
+
+    <fragment
+        android:id="@+id/todolist_displayfragment_completed_items"
+        android:name="tek.first.livingbetter.todolist.fragment.CompletedDetailedItemsDisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todolist_displayfragment_simple_todoitems" />
+
+    <fragment
+        android:id="@+id/todolist_displayfragment_completed_simple_items"
+        android:name="tek.first.livingbetter.todolist.fragment.CompletedSimpleToDoItemsDisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/todolist_displayfragment_completed_items" />
+</RelativeLayout>

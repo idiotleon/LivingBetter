@@ -11,23 +11,25 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tek.first.livingbetter.R;
+import tek.first.livingbetter.wallet.model.ItemModel;
 
 /**
  * Created by Administrator on 2015/8/27.
  */
 public class OneWeekAdapter extends BaseAdapter {
-    Context context;
-    ArrayList<Item> item_oneweek;
+
+    private Context context;
+    private ArrayList<ItemModel> itemOneWeek;
     private static LayoutInflater inflater = null;
-    public OneWeekAdapter(Fragment Fragment, ArrayList<Item> res) {
+    public OneWeekAdapter(Fragment Fragment, ArrayList<ItemModel> res) {
         context = Fragment.getActivity();
-        item_oneweek = res;
+        itemOneWeek = res;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return item_oneweek.size();
+        return itemOneWeek.size();
     }
 
     @Override
@@ -57,10 +59,10 @@ public class OneWeekAdapter extends BaseAdapter {
         holder.tv2 = (TextView) rowView.findViewById(R.id.date_tv_list);
         holder.tv3 = (TextView) rowView.findViewById(R.id.cate_tv_list);
         holder.tv4 = (TextView) rowView.findViewById(R.id.expense_tv_list);
-        holder.tv1.setText( String.valueOf(position + 1)+ "."+item_oneweek.get(position).getTitle());
-        holder.tv2.setText(item_oneweek.get(position).getDate().substring(0,8));
-        holder.tv3.setText(item_oneweek.get(position).getCate());
-        holder.tv4.setText(item_oneweek.get(position).getExpense());
+        holder.tv1.setText(String.valueOf(position + 1) + "." + itemOneWeek.get(position).getTitle());
+        holder.tv2.setText(itemOneWeek.get(position).getDate().substring(0, 8));
+        holder.tv3.setText(itemOneWeek.get(position).getCate());
+        holder.tv4.setText(itemOneWeek.get(position).getExpense());
         return rowView;
     }
 }

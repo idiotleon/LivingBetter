@@ -19,6 +19,8 @@ import android.content.Intent;
 
 import java.util.ArrayList;
 
+import tek.first.livingbetter.wallet.model.ItemModel;
+
 public interface IChart {
   String NAME = "name";
   String DESC = "desc";
@@ -27,6 +29,5 @@ public interface IChart {
 
   String getDesc();
 
-  Intent execute(Context context, ArrayList<Item> item);
-
+  Intent execute(Context context, ArrayList<ItemModel> item);
 }

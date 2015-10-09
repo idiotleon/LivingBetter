@@ -9,7 +9,8 @@ import org.achartengine.renderer.DefaultRenderer;
 
 import java.util.ArrayList;
 
-import tek.first.livingbetter.helper.DatabaseHelper;
+import tek.first.livingbetter.provider.DatabaseHelper;
+import tek.first.livingbetter.wallet.model.ItemModel;
 
 /**
  * Created by shipeng on 2015/8/27.
@@ -34,12 +35,12 @@ public class MyDemoChart extends AbstractDemoChart {
     }
 
     @Override
-    public Intent execute(Context context, ArrayList<Item> res) {
+    public Intent execute(Context context, ArrayList<ItemModel> res) {
         Double sum_shopping = 0.0;
         Double sum_entertainment = 0.0;
         Double sum_food = 0.0;
         Double sum_unknown = 0.0;
-        for (Item item : res) {
+        for (ItemModel item : res) {
             if (item.getCate().equals("Shopping")) {
                 sum_shopping += Double.parseDouble(item.getExpense());
             } else if (item.getCate().equals("Entertainment")) {
@@ -52,9 +53,7 @@ public class MyDemoChart extends AbstractDemoChart {
         }
         double total = sum_unknown + sum_shopping + sum_entertainment + sum_food;
 
-        if( total == 0.0 )
-            return  null;
-
+        if (total == 0.0) return null;
 
         double[] values = new double[]{sum_shopping, sum_entertainment, sum_food, sum_unknown};
         int[] colors = new int[]{Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED};
@@ -62,7 +61,5 @@ public class MyDemoChart extends AbstractDemoChart {
         renderer.setLabelsTextSize(50);
         return ChartFactory.getPieChartIntent(context, buildCategoryDataset("Project budget", values, total),
                 renderer, "Budget");
-
-
     }
 }

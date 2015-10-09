@@ -16,33 +16,51 @@
         android:icon="@mipmap/livingbetter"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <!-- Habit Activity -->
         <activity
-            android:name="tek.first.livingbetter.HomeActivity"
+            android:name="tek.first.livingbetter.habit.HabitDisplayActivity"
             android:label="@string/app_name">
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/habit_searchable" />
         </activity>
-        <activity android:name=".habit.DetailActivity" />
+
+        <activity android:name=".habit.HabitDetailActivity" />
+        <!-- Search Activity -->
+        <activity android:name=".habit.search.HabitSearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/habit_searchable" />
+        </activity>
+
+        <!-- ToDoList activities -->
+        <activity android:name=".todolist.activity.ToDoItemDetailsActivity" />
+        <activity android:name=".todolist.activity.ToDoListDisplayActivity" />
+        <activity android:name=".todolist.activity.ToDoListPreferenceActivity" />
+
+        <!-- Login activities-->
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.SignUpActivity" />
+
+
+        <!-- Setting Activity -->
+        <activity
+            android:name=".setting.SettingActivity"
+            android:label="@string/title_activity_setting" />
 
         <provider
             android:name=".provider.LivingBetterContentProvider"
             android:authorities="tek.first.livingbetter.LivingBetterProvider" />
-
-        <activity android:name=".habit.search.SearchResultsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".setting.SettingActivity"
-            android:label="@string/title_activity_setting" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

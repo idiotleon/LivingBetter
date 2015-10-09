@@ -1,6 +1,5 @@
 package tek.first.livingbetter;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -10,21 +9,21 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-import tek.first.livingbetter.habit.DisplayFragment;
+import tek.first.livingbetter.habit.HabitDisplayActivity;
 import tek.first.livingbetter.setting.SettingActivity;
-import tek.first.livingbetter.todolist.TodolistFragment;
+import tek.first.livingbetter.todolist.activity.ToDoListDisplayActivity;
 import tek.first.livingbetter.wallet.WalletFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    public static String LOG_TAG = HomeActivity.class.getSimpleName();
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -36,12 +35,11 @@ public class HomeActivity extends AppCompatActivity
      */
     private CharSequence mTitle;
 
-    public static String LOG_TAG = HomeActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.home_activity);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -72,6 +70,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Log.v(LOG_TAG, "onNavigationDrawerItemSelected: " + position);
         Fragment fragment;
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -79,15 +78,13 @@ public class HomeActivity extends AppCompatActivity
 
         switch (position) {
             case 0:
-                fragment = DisplayFragment.newInstance(position);
-                fragmentTransaction.replace(R.id.container, fragment);
-                fragmentTransaction.commit();
+                Intent habitIntent = new Intent(HomeActivity.this, HabitDisplayActivity.class);
+                startActivity(habitIntent);
                 mTitle = "Search";
                 break;
             case 1:
-                fragment = TodolistFragment.newInstance(position);
-                fragmentTransaction.replace(R.id.container, fragment);
-                fragmentTransaction.commit();
+                Intent todoListIntent = new Intent(HomeActivity.this, ToDoListDisplayActivity.class);
+                startActivity(todoListIntent);
                 mTitle = "To Do List";
                 break;
             case 2:
@@ -99,7 +96,6 @@ public class HomeActivity extends AppCompatActivity
             default:
                 Crouton.makeText(HomeActivity.this, "Something went wrong.", Style.ALERT).show();
         }
-
     }
 
     public void restoreActionBar() {
