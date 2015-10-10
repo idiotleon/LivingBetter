@@ -147,4 +147,10 @@
 
     <string name="share_title_text">How do you want to share?</string>
 
+    <string-array name="components">
+        <item>Habit</item>
+        <item>ToDoList</item>
+        <item>Wallet</item>
+    </string-array>
+
 </resources>

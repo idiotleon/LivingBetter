@@ -50,6 +50,9 @@
         <activity android:name=".todolist.activity.ToDoListDisplayActivity" />
         <activity android:name=".todolist.activity.ToDoListPreferenceActivity" />
 
+        <!-- Wallet activity -->
+        <activity android:name=".wallet.WalletActivity" />
+
         <!-- Login activities-->
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.SignUpActivity" />
