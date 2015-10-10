@@ -145,6 +145,9 @@
     <string name="preference_longitude">preference_longitude</string>
     <string name="preference_file_key">preference_file_key</string>
 
-    <string name="share_title_text">How do you want to share?</string>
+    <string-array name="components_habit">
+        <item>ToDoList</item>
+        <item>Wallet</item>
+    </string-array>
 
 </resources>

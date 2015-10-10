@@ -14,9 +14,10 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.support.v7.widget.SearchView;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
@@ -34,6 +36,8 @@ import java.util.ArrayList;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import tek.first.livingbetter.habit.leftdrawer.CustomDrawerListViewAdapter;
+import tek.first.livingbetter.habit.leftdrawer.DrawerItemClickListener;
 import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
@@ -51,17 +55,28 @@ public class HabitDisplayActivity extends AppCompatActivity {
     private ArrayList<InfoCollectedModel> foodArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> entertainmentArrayList = new ArrayList<>();
     private ArrayList<InfoCollectedModel> shoppingArrayList = new ArrayList<>();
-    //    private double[] currentAddress = new double[2];
     private LocationManager locationManager;
     private LocationListener locationListener;
     private double latitude;
     private double longitude;
     private boolean refersh;
 
+    private DrawerLayout drawerLayout;
+    private ListView drawerListView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.habit_display_activity);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_habit_display);
+        drawerListView = (ListView) findViewById(R.id.left_drawer_habit_display_activity);
+        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        drawerListView.setAdapter(new CustomDrawerListViewAdapter(HabitDisplayActivity.this));
+        drawerListView.setOnItemClickListener(new DrawerItemClickListener(HabitDisplayActivity.this));
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         gridViewFood = (GridView) findViewById(R.id.gridview_food_result);
         gridViewEntertainment = (GridView) findViewById(R.id.gridview_entertainment_result);
@@ -130,6 +145,12 @@ public class HabitDisplayActivity extends AppCompatActivity {
         super.onStart();
         initInfo();
         handleIntent(getIntent());
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_refresh).setVisible(!drawerLayout.isDrawerOpen(drawerListView));
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -275,6 +296,8 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
 //                        Log.v(LOG_TAG, "res size: " + String.valueOf(shoppingArrayList.size()));
                 } catch (JSONException ex) {
+                    ex.printStackTrace();
+                } catch (NullPointerException ex) {
                     ex.printStackTrace();
                 }
                 return null;

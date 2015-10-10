@@ -122,9 +122,9 @@ public class BudgetFragment extends Fragment {
                 Fragment fragment;
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                fragment = WalletFragment.newInstance(2);
+/*                fragment = WalletActivity.newInstance(2);
                 ft.replace(R.id.container, fragment);
-                ft.commit();
+                ft.commit();*/
             }
         });
 

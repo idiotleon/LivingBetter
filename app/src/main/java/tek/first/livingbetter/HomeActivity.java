@@ -18,7 +18,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 import tek.first.livingbetter.habit.HabitDisplayActivity;
 import tek.first.livingbetter.setting.SettingActivity;
 import tek.first.livingbetter.todolist.activity.ToDoListDisplayActivity;
-import tek.first.livingbetter.wallet.WalletFragment;
+import tek.first.livingbetter.wallet.WalletActivity;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -34,7 +34,6 @@ public class HomeActivity extends AppCompatActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +86,12 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(todoListIntent);
                 mTitle = "To Do List";
                 break;
-            case 2:
-                fragment = WalletFragment.newInstance(position);
+/*            case 2:
+                fragment = WalletActivity.newInstance(position);
                 fragmentTransaction.replace(R.id.container, fragment);
                 fragmentTransaction.commit();
                 mTitle = "Finance";
-                break;
+                break;*/
             default:
                 Crouton.makeText(HomeActivity.this, "Something went wrong.", Style.ALERT).show();
         }
