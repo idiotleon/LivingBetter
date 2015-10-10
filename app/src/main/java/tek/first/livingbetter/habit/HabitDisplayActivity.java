@@ -36,8 +36,8 @@ import java.util.ArrayList;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-import tek.first.livingbetter.CustomDrawerListViewAdapter;
-import tek.first.livingbetter.DrawerItemClickListener;
+import tek.first.livingbetter.habit.leftdrawer.CustomDrawerListViewAdapter;
+import tek.first.livingbetter.habit.leftdrawer.DrawerItemClickListener;
 import tek.first.livingbetter.R;
 import tek.first.livingbetter.habit.jsonparsing.Yelp;
 import tek.first.livingbetter.habit.model.InfoCollectedModel;
@@ -296,6 +296,8 @@ public class HabitDisplayActivity extends AppCompatActivity {
 
 //                        Log.v(LOG_TAG, "res size: " + String.valueOf(shoppingArrayList.size()));
                 } catch (JSONException ex) {
+                    ex.printStackTrace();
+                } catch (NullPointerException ex) {
                     ex.printStackTrace();
                 }
                 return null;
